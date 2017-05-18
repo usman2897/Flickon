@@ -1,0 +1,27 @@
+<%= form_for(item_prorerty) do |f| %>
+  <% if item_prorerty.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(item_prorerty.errors.count, "error") %> prohibited this item_prorerty from being saved:</h2>
+
+      <ul>
+      <% item_prorerty.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :item_property %>
+    <%= f.text_field :item_property %>
+  </div>
+
+  <div class="field">
+    <%= f.label :property_value %>
+    <%= f.text_field :property_value %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

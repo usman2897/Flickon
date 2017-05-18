@@ -1,0 +1,46 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  
+  <img src="<%= @item.image_url %>" style="width:200px;hight:200px;" >
+</p>
+
+<p>
+  <strong>Item name:</strong>
+  <%= @item.item_name %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @category.category_name %>
+</p>
+
+<p>
+  <strong>Sub category:</strong>
+  <%= @sub_category.sub_category_name %>
+</p>
+
+<p>
+  <strong>Quantity:</strong>
+  <%= @item.quantity %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @item.price %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @item.description %>
+</p>
+
+<p>
+  <strong>Seller:</strong>
+  <%= @item.seller_id %>
+</p>
+
+
+
+<%= link_to 'Edit', edit_item_path(@item) %> |
+<%= link_to 'Back', items_path %>

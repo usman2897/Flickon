@@ -5,4 +5,5 @@ class Item < ApplicationRecord
     belongs_to :category
     belongs_to :sub_category
     belongs_to :seller
+    mount_uploader :image, ImageUploader
 end
