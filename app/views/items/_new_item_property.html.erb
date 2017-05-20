@@ -1,0 +1,9 @@
+<%= fields_for @item_property do |u| %> 
+    <div class="field">
+    <%= u.label :item_property %>
+    <%= u.text_field :item_property %>
+  
+    <%= u.label :property_value %>
+    <%= u.text_field :property_value %>
+    </div>
+<% end %>

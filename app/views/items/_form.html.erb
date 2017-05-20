@@ -1,4 +1,14 @@
-<%= form_for(item) do |f| %>
+
+  <script>
+  $("#addNewProperty").click(function(){
+    $("#new_property").append('<p>hi</p>');
+
+  console.log("hi");
+  });
+  </script>
+
+
+<%= form_for(@item, remote: true, format: :json, html: {class: :item_form} ) do |f| %>
   <% if item.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(item.errors.count, "error") %> prohibited this item from being saved:</h2>
@@ -51,7 +61,24 @@
     <%= f.file_field :image %>
   </div>
 
+
+    <div id = "new_property">
+      <%= render partial: 'new_item_property' %>
+      <%= render partial: 'new_item_property' %>
+      <%= render partial: 'new_item_property' %>
+    </div>
+      <!--<a href="javascript:new_property.js" id="addNewProperty">Add New Property</a>-->
+  <br>
+
+    
+
   <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
+
+<div style="display: none;" id="new_choice_form">
+    <%= render partial: "new_item_property", locals: {item_property: false} %>
+</div>
+
+

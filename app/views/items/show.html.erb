@@ -31,6 +31,13 @@
 </p>
 
 <p>
+  <% @item_properties.each do |item_property| %>
+  <strong><%= item_property.item_property %>:</strong>
+  <%= item_property.property_value %>
+  <% end %>
+</p>
+
+<p>
   <strong>Description:</strong>
   <%= @item.description %>
 </p>

@@ -3,4 +3,5 @@ Rails.application.routes.draw do
   resources :items
   resources :sellers
   resources :users
+  resources :item_properties
 end

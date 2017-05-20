@@ -1,10 +1,10 @@
-<%= form_for(item_prorerty) do |f| %>
-  <% if item_prorerty.errors.any? %>
+<%= form_for(item_property) do |f| %>
+  <% if item_property.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(item_prorerty.errors.count, "error") %> prohibited this item_prorerty from being saved:</h2>
+      <h2><%= pluralize(item_property.errors.count, "error") %> prohibited this item_property from being saved:</h2>
 
       <ul>
-      <% item_prorerty.errors.full_messages.each do |message| %>
+      <% item_property.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
