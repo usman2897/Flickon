@@ -37,6 +37,28 @@ class UsersController < ApplicationController
     end
   end
 
+  def login
+    #if account_user_signed_in? && cookies.signed[:id] == 'user'
+     # redirect_to items_url
+    #end
+    @user = User.new
+  end
+
+  def loggedin
+    @user = User.find_by("LOWER(user_id) = ?",login_params[:user_id].downcase)
+
+    if @user.present? && @user.authenticate(login_params[:password])
+      cookies.permanent.signed[:user_id] = @user.user_id
+      cookies.permanent.signed[:id] = 'user'
+      redirect_to items_url
+    end
+  end
+
+  def logout
+    cookies.delete(:user_id)
+    redirect_to users_login_url
+  end
+
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
@@ -70,5 +92,9 @@ class UsersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
       params.require(:user).permit(:user_id, :user_name, :user_email, :password, :user_phone)
+    end
+
+    def login_params
+      params.require(:users).permit(:user_id, :password)
     end
 end
