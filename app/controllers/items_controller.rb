@@ -11,6 +11,7 @@ class ItemsController < ApplicationController
   # GET /items/1
   # GET /items/1.json
   def show
+    current_account_seller
     @item = Item.find(params[:id])
     if(@item.quantity == 0)
       @item.destroy
@@ -32,6 +33,7 @@ class ItemsController < ApplicationController
 
   # GET /items/1/edit
   def edit
+    #if account_seller_signed_in? and 
   end
 
   # POST /items
@@ -82,5 +84,9 @@ class ItemsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
       params.require(:item).permit(:item_name, :category_id, :sub_category_id, :quantity, :price, :description, :seller_id, :image)
+    end
+
+    def check_seller
+      account_seller_signed_in? && @current_account_seller.seller_id == item.seller_id
     end
 end

@@ -41,7 +41,8 @@
 </p>
 
 
-
-<%= link_to 'Edit', edit_item_path(@item) %> |
+<% if account_seller_signed_in? && @current_account_seller.seller_id == @item.seller_id %>
+  <%= link_to 'Edit', edit_item_path(@item) %>| 
+<% end %>
 <%= link_to 'Back', items_path %>
 <%= link_to " BUY", { controller: "orders", action: "new", item: @item.item_id} %>

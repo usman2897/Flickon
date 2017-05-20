@@ -16,7 +16,6 @@ class OrdersController < ApplicationController
   def new
     @order = Order.new
     @item = Item.find(params[:item])
-    @order.item_id = @item.item_id
   end
 
   # GET /orders/1/edit
@@ -26,8 +25,11 @@ class OrdersController < ApplicationController
   # POST /orders
   # POST /orders.json
   def create
-    @order = Order.new(order_params)
-
+    current_account_user
+    @order.item_id = @item.item_id
+    @order.user_id = @current_user.user_id
+    @order.ordered_quantity = order_params[:ordered_quantity]
+    @order.total_price = @item.price * @order.ordered_quantity
     respond_to do |format|
       if @order.save
         format.html { redirect_to @order, notice: 'Order was successfully created.' }
@@ -71,6 +73,6 @@ class OrdersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:order_id, :user_id, :item_id, :ordered_quantity, :total_price)
+      params.require(:order).permit( :ordered_quantity )
     end
 end
