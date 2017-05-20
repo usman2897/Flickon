@@ -1,0 +1,8 @@
+<h1>Login</h1>
+<%= form_tag :action => 'loggedin' do %>
+    <p><label for="seller_id">Seller_ID:</label>
+    <%= text_field 'sellers', 'seller_id' %></p>
+    <p><label for="password">Password:</label>
+    <%= password_field 'sellers', 'password' %></p>
+    <%= submit_tag "Login" %>
+<% end -%>

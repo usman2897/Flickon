@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>OnlineShopping</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+ 
+  <body>
+    <nav>
+        <% if account_user_signed_in? && cookies.signed[:id] == 'user' %>
+          <% @current_user = current_account_user %>
+          <%= @current_user.user_id %> 
+        <% elsif account_seller_signed_in? && cookies.signed[:id] == 'seller' %>
+          <% @current_seller = current_account_seller %>
+          <%= @current_seller.seller_id %> 
+        <% else %>
+          <li><%= link_to 'log in', users_login_path %></li>
+        <% end %>
+    </nav>
+    <%= yield %>
+  </body>
+</html>

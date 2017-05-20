@@ -1,4 +1,5 @@
 class SellersController < ApplicationController
+  layout 'standard'
   before_action :set_seller, only: [:show, :edit, :update, :destroy]
 
   # GET /sellers
@@ -38,6 +39,29 @@ class SellersController < ApplicationController
     end
   end
 
+  def login
+    if account_seller_signed_in?
+      redirect_to items_url
+    end
+    @seller = Seller.new
+  end
+
+  def loggedin
+    @seller = Seller.find_by("LOWER(seller_id) = ?",login_params[:seller_id].downcase)
+
+    if @seller.present? && @seller.authenticate(login_params[:password])
+      cookies.permanent.signed[:seller_id] = @seller.seller_id
+      cookies.permanent.signed[:id] = 'seller'
+      @sellerid = cookies.signed[:seller_id]
+      redirect_to items_url
+    end
+  end
+
+  def logout
+    cookies.delete(:seller_id)
+    redirect_to sellers_login_url
+  end
+
   # PATCH/PUT /sellers/1
   # PATCH/PUT /sellers/1.json
   def update
@@ -72,4 +96,8 @@ class SellersController < ApplicationController
     def seller_params
       params.require(:seller).permit(:seller_id, :organization, :password)
     end
+
+    def login_params
+    params.require(:sellers).permit(:seller_id, :password)
+  end
 end
