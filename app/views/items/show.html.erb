@@ -44,3 +44,4 @@
 
 <%= link_to 'Edit', edit_item_path(@item) %> |
 <%= link_to 'Back', items_path %>
+<%= link_to " BUY", { controller: "orders", action: "new", item: @item.item_id} %>

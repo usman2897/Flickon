@@ -4,13 +4,20 @@ class ItemsController < ApplicationController
   # GET /items
   # GET /items.json
   def index
-    @items = Item.all
+    @items = Item.where("quantity > ?", 0)
   end
 
   # GET /items/1
   # GET /items/1.json
   def show
     @item = Item.find(params[:id])
+    if(@item.quantity == 0)
+      @item.destroy
+    respond_to do |format|
+      format.html { redirect_to items_url, notice: 'Item was successfully destroyed.' }
+      format.json { head :no_content }
+    end
+    end
     @category = Category.find(@item.category_id)
     @sub_category = SubCategory.find(@item.sub_category_id)
   end
