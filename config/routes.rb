@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get 'users/login' => "users#login"
   post 'users/loggedin'
   get 'users/logout'
+  get 'orders/myorders'
   resources :items
   resources :sellers
   resources :orders

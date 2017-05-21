@@ -10,14 +10,21 @@
  
   <body>
     <nav>
+        <% url = request.original_url %>
         <% if account_user_signed_in? && cookies.signed[:id] == 'user' %>
           <% @current_user = current_account_user %>
-          <%= @current_user.user_id %> 
+          <%= @current_user.user_id %>
+          <li><%= link_to 'logout', users_logout_path %></li>
         <% elsif account_seller_signed_in? && cookies.signed[:id] == 'seller' %>
           <% @current_seller = current_account_seller %>
-          <%= @current_seller.seller_id %> 
+          <%= @current_seller.seller_id %>
+          <li><%= link_to 'logout', sellers_logout_path %></li>
+        <% elsif url['users/login'] %>
+          <li><%= link_to 'seller login', sellers_login_path %></li>
+        <% elsif url['sellers/login'] %>
+          <li><%= link_to 'user login', users_login_path %></li>
         <% else %>
-          <li><%= link_to 'log in', users_login_path %></li>
+          <li><%= link_to 'login', users_login_path %></li>
         <% end %>
     </nav>
     <%= yield %>

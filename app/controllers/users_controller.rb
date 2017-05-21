@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  layout 'standard'
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   # GET /users
@@ -38,9 +39,9 @@ class UsersController < ApplicationController
   end
 
   def login
-    #if account_user_signed_in? && cookies.signed[:id] == 'user'
-     # redirect_to items_url
-    #end
+    if (account_user_signed_in? && cookies.signed[:id] == 'user') || (account_seller_signed_in? && cookies.signed[:id] == 'seller')
+      redirect_to items_url
+    end
     @user = User.new
   end
 

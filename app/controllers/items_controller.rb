@@ -26,6 +26,9 @@ class ItemsController < ApplicationController
 
   # GET /items/new
   def new
+    if account_seller_signed_in? != true
+      redirect_to sellers_login_url
+    end
     @item = Item.new
     @categories = Category.all
     @sub_categories = SubCategory.all
