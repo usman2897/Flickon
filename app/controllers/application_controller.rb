@@ -28,4 +28,7 @@ class ApplicationController < ActionController::Base
     current_account_user.present?
   end
   
+  def to_ist
+    5.hours + 30.minutes
+  end
 end

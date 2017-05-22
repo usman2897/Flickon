@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   post 'users/loggedin'
   get 'users/logout'
   get 'orders/myorders'
+  get 'sellers/dashboard'
   resources :items
   resources :sellers
   resources :order_tracks

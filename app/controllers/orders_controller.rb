@@ -27,6 +27,10 @@ class OrdersController < ApplicationController
 
   # GET /orders/1/edit
   def edit
+    @orders = Order.find_by(:order_id, params[:id])
+    #@orders.each do |order|
+     # @order = order
+    #end
   end
 
  
@@ -40,7 +44,7 @@ class OrdersController < ApplicationController
     @order.user_id = @current_user.user_id
     @order.ordered_quantity = order_params[:ordered_quantity]
     @order.total_price = $item.price * @order.ordered_quantity
-    @order.ordered_time = Time.now + 5.hours + 30.minutes
+    @order.ordered_time = Time.now + to_ist
     respond_to do |format| 
       if @order.save
         if($item.quantity <= 0)
