@@ -12,10 +12,14 @@ class OrdersController < ApplicationController
   # GET /orders/1
   # GET /orders/1.json
   def show
+    @order = Order.find_by(order_id: params[:id])
   end
 
   # GET /orders/new
   def new
+    if account_user_signed_in? != true
+      redirect_to users_login_url
+    end
     @order = Order.new
     $item = Item.find(params[:item])
     @order.item_id = @item_id
@@ -29,6 +33,7 @@ class OrdersController < ApplicationController
   # POST /orders
   # POST /orders.json
   def create
+    @order = Order.new(order_params)
     current_account_user
     @order = Order.new
     @order.item_id = $item.item_id
@@ -70,19 +75,25 @@ class OrdersController < ApplicationController
   def destroy
     @order.destroy
     respond_to do |format|
-      format.html { redirect_to orders_url, notice: 'Order was successfully destroyed.' }
+      format.html { redirect_to orders_myorders_url, notice: 'Order was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def myorders
+    current_account_user
+    @orders = Order.where(:user_id => @current_user)
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_order
-      @order = Order.find(params[:id])
+      
+      @orders = Order.where(:user_id => @current_user)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit( :ordered_quantity )
+      params.require(:order).permit( :item_id, :ordered_quantity, :total_price)
     end
 end

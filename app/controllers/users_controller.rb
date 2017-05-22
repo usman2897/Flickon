@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  layout 'standard'
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   # GET /users
@@ -14,11 +15,18 @@ class UsersController < ApplicationController
 
   # GET /users/new
   def new
+    if account_user_signed_in? || account_seller_signed_in?
+      redirect_to items_url
+    end
     @user = User.new
   end
 
   # GET /users/1/edit
   def edit
+    current_account_user
+    if account_user_signed_in? != true || @current_user.user_id != @user.user_id
+      redirect_to items_url
+    end
   end
 
   # POST /users
@@ -38,9 +46,9 @@ class UsersController < ApplicationController
   end
 
   def login
-    #if account_user_signed_in? && cookies.signed[:id] == 'user'
-     # redirect_to items_url
-    #end
+    if (account_user_signed_in? && cookies.signed[:id] == 'user') || (account_seller_signed_in? && cookies.signed[:id] == 'seller')
+      redirect_to items_url
+    end
     @user = User.new
   end
 
@@ -76,6 +84,10 @@ class UsersController < ApplicationController
   # DELETE /users/1
   # DELETE /users/1.json
   def destroy
+    current_account_user
+    if account_user_signed_in? != true || (@current_user.user_id != @user.user_id)
+      redirect_to items_url
+    end
     @user.destroy
     respond_to do |format|
       format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }

@@ -1,0 +1,23 @@
+<% @orders.each do |order| %>
+    <% item = Item.find(order.item_id) %>
+    <p>
+        <strong>Order:</strong>
+        <%= order.order_id %>
+    </p>
+
+    <p>
+        <strong>Item:</strong>
+        <%= item = item.item_name %>
+    </p>
+
+    <p>
+        <strong>Ordered quantity:</strong>
+        <%= order.ordered_quantity %>
+    </p>
+
+    <p>
+        <strong>Total price:</strong>
+        <%= order.total_price %>
+    </p>
+
+<% end %>

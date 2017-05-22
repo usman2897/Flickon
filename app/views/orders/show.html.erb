@@ -25,5 +25,6 @@
   <%= @order.total_price %>
 </p>
 
-<%= link_to " TRACK", { controller: "order_tracks", action: "show", order: @order.order_id} %> |
+
+<%= link_to 'Edit', edit_order_path(@order.order_id) %> |
 <%= link_to 'Back', orders_path %>
