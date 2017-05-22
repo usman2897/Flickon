@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get 'users/logout'
   resources :items
   resources :sellers
+  resources :order_tracks
   resources :orders
   resources :users
 end

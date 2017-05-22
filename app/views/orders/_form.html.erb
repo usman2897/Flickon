@@ -1,3 +1,7 @@
+
+
+<p> Item Name : <%= $item.item_name %> </p>
+
 <%= form_for(order) do |f| %>
   <% if order.errors.any? %>
     <div id="error_explanation">
@@ -11,23 +15,16 @@
     </div>
   <% end %>
   
-  <div class="field">
-    <% if account_user_signed_in? && cookies.signed[:id] == 'user' %>
-        <% @current_user = current_account_user %>
-        <p>User: <%= @current_user.user_name %> </p>
-    <% end %>
-  </div>
 
-  <div class="field">
-    <p>Item: <%= item.item_name %></p>
-  </div>
 
   <div class="field">
     <%= f.label :ordered_quantity %>
-    <%= f.number_field :ordered_quantity, :value => 1, :max => item.quantity, :min => 1 %>
+    <%= f.number_field :ordered_quantity, :value => 1, :max => $item.quantity, :min => 1 %>
   </div>
 
-  <div class="actions">
+
+ 
+ <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>

@@ -1,6 +1,6 @@
 <h1>Items</h1>
 
-<table>
+<table class="table table-striped">
   <thead>
     <tr>
       <th>Item name</th>
@@ -42,3 +42,5 @@
 <br>
 
 <%= link_to 'New Item', new_item_path %>
+<br><br><br>
+<%= link_to 'My Orders', { controller: "orders", action: "index" } %>

@@ -1,10 +1,12 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy]
-
+ 
   # GET /orders
   # GET /orders.json
+  @item1 = Item.new
   def index
-    @orders = Order.all
+    current_account_user
+    @orders = Order.where( "user_id = ?", @current_user.user_id)
   end
 
   # GET /orders/1
@@ -15,24 +17,32 @@ class OrdersController < ApplicationController
   # GET /orders/new
   def new
     @order = Order.new
-    @item = Item.find(params[:item])
+    $item = Item.find(params[:item])
+    @order.item_id = @item_id
   end
 
   # GET /orders/1/edit
   def edit
   end
 
+ 
   # POST /orders
   # POST /orders.json
   def create
     current_account_user
-    @order.item_id = @item.item_id
+    @order = Order.new
+    @order.item_id = $item.item_id
     @order.user_id = @current_user.user_id
     @order.ordered_quantity = order_params[:ordered_quantity]
-    @order.total_price = @item.price * @order.ordered_quantity
-    respond_to do |format|
+    @order.total_price = $item.price * @order.ordered_quantity
+    @order.ordered_time = Time.now + 5.hours + 30.minutes
+    respond_to do |format| 
       if @order.save
-        format.html { redirect_to @order, notice: 'Order was successfully created.' }
+        if($item.quantity <= 0)
+          $item.destroy
+        end
+        $item.update_attribute(:quantity, $item.quantity-@order.ordered_quantity)
+        format.html { redirect_to orders_url, notice: 'Order was successfully created.' }
         format.json { render :show, status: :created, location: @order }
       else
         format.html { render :new }

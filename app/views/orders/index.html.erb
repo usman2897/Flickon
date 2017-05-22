@@ -2,29 +2,31 @@
 
 <h1>Orders</h1>
 
-<table>
+<table class="table table-striped">
   <thead>
     <tr>
       <th>Order</th>
-      <th>User</th>
       <th>Item</th>
+      <th>Unit Price</th>
       <th>Ordered quantity</th>
       <th>Total price</th>
+      <th>Ordered Time</th>
       <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @orders.each do |order| %>
+        <% $item = Item.find(order.item_id) %>
       <tr>
         <td><%= order.order_id %></td>
-        <td><%= order.user_id %></td>
-        <td><%= order.item_id %></td>
+        <td><%= $item.item_name %></td>
+        <td><%= $item.price %></td>
         <td><%= order.ordered_quantity %></td>
         <td><%= order.total_price %></td>
-        <td><%= link_to 'Show', order %></td>
-        <td><%= link_to 'Edit', edit_order_path(order) %></td>
-        <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= order.ordered_time.to_formatted_s(:long_ordinal)  %></td>
+        
+        
       </tr>
     <% end %>
   </tbody>
@@ -32,4 +34,4 @@
 
 <br>
 
-<%= link_to 'New Order', new_order_path %>
+

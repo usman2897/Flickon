@@ -33,6 +33,8 @@ gem 'jbuilder', '~> 2.5'
 gem 'bcrypt', '~> 3.1.7'
 gem 'carrierwave', '~> 0.9' 
 
+gem 'bootstrap-sass'
+gem 'composite_primary_keys', '~>9.0.1'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

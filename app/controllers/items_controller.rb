@@ -5,6 +5,7 @@ class ItemsController < ApplicationController
   # GET /items
   # GET /items.json
   def index
+    current_account_seller
     @items = Item.where("quantity > ?", 0)
   end
 
@@ -20,6 +21,7 @@ class ItemsController < ApplicationController
       format.json { head :no_content }
     end
     end
+    @item.update_attribute(:hits, @item.hits + 1)
     @category = Category.find(@item.category_id)
     @sub_category = SubCategory.find(@item.sub_category_id)
   end
