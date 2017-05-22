@@ -40,7 +40,7 @@ class SellersController < ApplicationController
   end
 
   def login
-    if account_seller_signed_in?
+    if account_seller_signed_in? || account_user_signed_in?
       redirect_to items_url
     end
     @seller = Seller.new

@@ -24,6 +24,10 @@
   <strong>User phone:</strong>
   <%= @user.user_phone %>
 </p>
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
+<% if account_user_signed_in? %>
+  <% @current = current_account_user %>
+  <% if @current.user_id == @user.user_id %>
+    <%= link_to 'Edit', edit_user_path(@user) %> |
+  <% end %>
+<% end %>
 <%= link_to 'Back', users_path %>

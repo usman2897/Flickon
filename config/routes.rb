@@ -11,4 +11,5 @@ Rails.application.routes.draw do
   resources :sellers
   resources :orders
   resources :users
+  root 'items#index'
 end

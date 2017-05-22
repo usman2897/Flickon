@@ -10,6 +10,7 @@ class OrdersController < ApplicationController
   # GET /orders/1
   # GET /orders/1.json
   def show
+    @order = Order.find_by(order_id: params[:id])
   end
 
   # GET /orders/new
@@ -38,7 +39,7 @@ class OrdersController < ApplicationController
     @order.total_price = @order.total_price * @order.ordered_quantity
     respond_to do |format|
       if @order.save
-        format.html { redirect_to orders_url, notice: 'Order was successfully created.' }
+        format.html { redirect_to orders_myorders_url, notice: 'Order was successfully created.' }
         format.json { render :show, status: :created, location: @order }
       else
         format.html { render :new }

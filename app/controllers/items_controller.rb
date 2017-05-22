@@ -36,12 +36,17 @@ class ItemsController < ApplicationController
 
   # GET /items/1/edit
   def edit
-    #if account_seller_signed_in? and 
+    if account_user_signed_in?
+      redirect_to items_url
+    end 
   end
 
   # POST /items
   # POST /items.json
   def create
+    if account_user_signed_in?
+      redirect_to items_url
+    end
     @item = Item.new(item_params)
     respond_to do |format|
       if @item.save
@@ -71,6 +76,9 @@ class ItemsController < ApplicationController
   # DELETE /items/1
   # DELETE /items/1.json
   def destroy
+    if account_user_signed_in?
+      redirect_to items_url
+    end
     @item.destroy
     respond_to do |format|
       format.html { redirect_to items_url, notice: 'Item was successfully destroyed.' }

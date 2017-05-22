@@ -21,10 +21,13 @@
           <li><%= link_to 'logout', sellers_logout_path %></li>
         <% elsif url['users/login'] %>
           <li><%= link_to 'seller login', sellers_login_path %></li>
+          <li><%= link_to 'signup', new_user_path %></li>
         <% elsif url['sellers/login'] %>
           <li><%= link_to 'user login', users_login_path %></li>
+          <li><%= link_to 'signup', new_seller_path %></li>
         <% else %>
           <li><%= link_to 'login', users_login_path %></li>
+          <li><%= link_to 'signup', new_user_path %></li>
         <% end %>
     </nav>
     <%= yield %>
