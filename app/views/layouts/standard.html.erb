@@ -1,3 +1,16 @@
+<style>
+li {
+    border-right: 1px solid #bbb;
+}
+ul {
+    float:left;
+}
+li:last-child {
+    border-right: none;
+}
+</style>
+
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -9,12 +22,19 @@
   </head>
  
   <body>
-    <nav>
+
+<div class="navbar navbar-inverse bg-inverse">
+      <div class="container">
+
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+
+        <ul class="nav navbar-nav" >
         <% url = request.original_url %>
         <% if account_user_signed_in? && cookies.signed[:id] == 'user' %>
           <% @current_user = current_account_user %>
-          <%= @current_user.user_id %>
-          <li><%= link_to 'logout', users_logout_path %></li>
+          <li style="color:aqua;"><%= @current_user.user_id %></li>
+          <li style="float:right;"><%= link_to 'logout', users_logout_path %></li>
         <% elsif account_seller_signed_in? && cookies.signed[:id] == 'seller' %>
           <% @current_seller = current_account_seller %>
           <%= @current_seller.seller_id %>
@@ -29,7 +49,11 @@
           <li><%= link_to 'login', users_login_path %></li>
           <li><%= link_to 'signup', new_user_path %></li>
         <% end %>
-    </nav>
+        </ul>
+
+
+      </div>
+    </div>
     <%= yield %>
   </body>
 </html>
