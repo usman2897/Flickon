@@ -6,7 +6,7 @@
         Ordered Quantity: <%= order.ordered_quantity %><br>
         total_price: <%= order.total_price %><br>
         Ordered_time: <%= order.ordered_time.to_formatted_s(:long_ordinal) %></p>
-        
+        <%= link_to 'dispatch', { controller: "sellers", action: "dispatched", id: order.order_id} %> 
     <% end %>
 <% end %>
 
@@ -17,6 +17,7 @@
         Ordered Quantity: <%= order.ordered_quantity %><br>
         total_price: <%= order.total_price %><br>
         Ordered_time: <%= order.ordered_time.to_formatted_s(:long_ordinal) %></p>
+        <%= link_to 'dispatch', { controller: "sellers", action: "deliver", id: order.order_id} %>
     <% end %>
 <% end %>
 

@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   get 'users/logout'
   get 'orders/myorders'
   get 'sellers/dashboard'
+  get 'sellers/dispatched'
+  get 'sellers/deliver'
   resources :items
   resources :sellers
   resources :order_tracks

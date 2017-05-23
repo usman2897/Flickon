@@ -71,6 +71,22 @@ class SellersController < ApplicationController
     end
   end
 
+  def dispatched
+    @order = Order.find_by(order_id: params[:id])
+    #@order.dispatched_time = Time.now + 5.hours + 30.minutes
+    #@order.save
+    @order.update_attribute(:dispatched_time, (Time.now + 5.hours + 30.minutes))
+    redirect_to sellers_dashboard_url
+  end
+
+  def deliver
+    @order = Order.find_by(order_id: params[:id])
+    #@order.dispatched_time = Time.now + 5.hours + 30.minutes
+    #@order.save
+    @order.update_attribute(:delivered_time, (Time.now + 5.hours + 30.minutes))
+    redirect_to sellers_dashboard_url
+  end
+
   def logout
     cookies.delete(:seller_id)
     redirect_to sellers_login_url
