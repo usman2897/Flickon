@@ -52,9 +52,39 @@ class SellersController < ApplicationController
     if @seller.present? && @seller.authenticate(login_params[:password])
       cookies.permanent.signed[:seller_id] = @seller.seller_id
       cookies.permanent.signed[:id] = 'seller'
-      @sellerid = cookies.signed[:seller_id]
-      redirect_to items_url
+      redirect_to sellers_dashboard_url
     end
+  end
+
+  def dashboard
+    @orders = Array.new
+    current_account_seller
+    if account_seller_signed_in?
+      @items = Item.where(seller_id: @current_seller.seller_id)
+      @items.each do |item|
+        @temp = Order.where(item_id: item.item_id)
+        #@temp.each do |temp|
+         # @orders.push(temp)
+        #end
+        @orders.concat(@temp)
+      end
+    end
+  end
+
+  def dispatched
+    @order = Order.find_by(order_id: params[:id])
+    #@order.dispatched_time = Time.now + 5.hours + 30.minutes
+    #@order.save
+    @order.update_attribute(:dispatched_time, (Time.now + 5.hours + 30.minutes))
+    redirect_to sellers_dashboard_url
+  end
+
+  def deliver
+    @order = Order.find_by(order_id: params[:id])
+    #@order.dispatched_time = Time.now + 5.hours + 30.minutes
+    #@order.save
+    @order.update_attribute(:delivered_time, (Time.now + 5.hours + 30.minutes))
+    redirect_to sellers_dashboard_url
   end
 
   def logout

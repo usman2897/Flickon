@@ -25,8 +25,17 @@
         <td><%= order.ordered_quantity %></td>
         <td><%= order.total_price %></td>
         <td><%= order.ordered_time.to_formatted_s(:long_ordinal)  %></td>
-        
-        
+        <% if order.dispatched_time != nil %>
+          <td><%= order.dispatched_time.to_formatted_s(:long_ordinal) %></td>
+          <% if order.delivered_time != nil %>
+            <td><%= order.delivered_time.to_formatted_s(:long_ordinal) %></td>
+            <td style = 'color:blue;'>Delivered!</td>
+          <% else %>
+            <td style = 'color:green;'>Dispatched!</td>
+          <% end %>
+        <% else %>
+          <td style = 'color:red;'>Ordered!</td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>

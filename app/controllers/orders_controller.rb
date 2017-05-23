@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+  layout 'standard'
   before_action :set_order, only: [:show, :edit, :update, :destroy]
  
   # GET /orders
@@ -6,16 +7,24 @@ class OrdersController < ApplicationController
   @item1 = Item.new
   def index
     current_account_user
-    @orders = Order.where( "user_id = ?", @current_user.user_id)
+    if account_user_signed_in?
+      @orders = Order.where( "user_id = ?", @current_user.user_id)
+    else
+      redirect_to users_login_url
+    end
   end
 
   # GET /orders/1
   # GET /orders/1.json
   def show
+    current_account_user
     @order = Order.find_by(order_id: params[:id])
+    if account_user_signed_in? &&  @current_user.user_id != @order.user_id
+      redirect_to orders_url
+    end
   end
 
-  # GET /orders/new
+  # GET /orders/new?item=1
   def new
     if account_user_signed_in? != true
       redirect_to users_login_url
@@ -27,6 +36,10 @@ class OrdersController < ApplicationController
 
   # GET /orders/1/edit
   def edit
+    @orders = Order.find_by(:order_id, params[:id])
+    #@orders.each do |order|
+     # @order = order
+    #end
   end
 
  
@@ -40,7 +53,7 @@ class OrdersController < ApplicationController
     @order.user_id = @current_user.user_id
     @order.ordered_quantity = order_params[:ordered_quantity]
     @order.total_price = $item.price * @order.ordered_quantity
-    @order.ordered_time = Time.now + 5.hours + 30.minutes
+    @order.ordered_time = Time.now + to_ist
     respond_to do |format| 
       if @order.save
         if($item.quantity <= 0)

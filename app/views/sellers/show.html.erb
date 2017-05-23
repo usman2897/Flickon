@@ -9,6 +9,10 @@
   <strong>Password:</strong>
   <%= @seller.password %>
 </p>
-
-<%= link_to 'Edit', edit_seller_path(@seller) %> |
+<% if account_seller_signed_in? %>
+  <% @current = current_account_seller %>
+  <% if @current.seller_id == item.seller_id %>
+    <%= link_to 'Edit', edit_seller_path(@seller) %> |
+  <% end %>
+<% end %>
 <%= link_to 'Back', sellers_path %>

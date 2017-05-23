@@ -1,0 +1,32 @@
+<h3>Dashboard</h3>
+<h4 style = "color:red;">New Orders</h4>
+<% @orders.each do |order| %>
+    <% if order.dispatched_time == nil && order.delivered_time == nil %>
+        <p>Item_id: <%= order.item_id %><br>
+        Ordered Quantity: <%= order.ordered_quantity %><br>
+        total_price: <%= order.total_price %><br>
+        Ordered_time: <%= order.ordered_time.to_formatted_s(:long_ordinal) %></p>
+        <%= link_to 'dispatch', { controller: "sellers", action: "dispatched", id: order.order_id} %> 
+    <% end %>
+<% end %>
+
+<h4 style = "color:Blue;">Dispatched Orders</h4>
+<% @orders.each do |order| %>
+    <% if order.dispatched_time != nil && order.delivered_time == nil %>
+        <p>Item_id: <%= order.item_id %><br>
+        Ordered Quantity: <%= order.ordered_quantity %><br>
+        total_price: <%= order.total_price %><br>
+        Ordered_time: <%= order.ordered_time.to_formatted_s(:long_ordinal) %></p>
+        <%= link_to 'dispatch', { controller: "sellers", action: "deliver", id: order.order_id} %>
+    <% end %>
+<% end %>
+
+<h4>Previous Orders</h4>
+<% @orders.each do |order| %>
+    <% if order.dispatched_time != nil && order.delivered_time != nil %>
+        <p>Item_id: <%= order.item_id %><br>
+        Ordered Quantity: <%= order.ordered_quantity %><br>
+        total_price: <%= order.total_price %><br>
+        Ordered_time: <%= order.ordered_time.to_formatted_s(:long_ordinal) %></p>
+    <% end %>
+<% end %>

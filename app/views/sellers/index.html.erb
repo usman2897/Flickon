@@ -17,13 +17,16 @@
         <td><%= seller.organization %></td>
         <td><%= seller.password %></td>
         <td><%= link_to 'Show', seller %></td>
-        <td><%= link_to 'Edit', edit_seller_path(seller) %></td>
-        <td><%= link_to 'Destroy', seller, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if account_seller_signed_in? %>
+          <% @current = current_account_seller %>
+          <% if @current.seller_id == item.seller_id %>
+            <td><%= link_to 'Edit', edit_seller_path(seller) %></td>
+            <td><%= link_to 'Destroy', seller, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% end %>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'New Seller', new_seller_path %>
