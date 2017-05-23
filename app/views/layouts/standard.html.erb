@@ -30,6 +30,17 @@
           <li><%= link_to 'signup', new_user_path %></li>
         <% end %>
     </nav>
+    <p>
+      <% Category.all.each do |category| %>
+        <div class = 'category_id'>
+          <br><strong><%= link_to category.category_name, '#', class: "cat" %></strong><br>
+          <% @subcategories = SubCategory.where(category_id: category.category_id) %>
+          <% @subcategories.each do |subcategory| %>
+            <%= subcategory.sub_category_name %>.....
+          <% end %>
+        </div>
+      <% end %>
+    </p>
     <%= yield %>
   </body>
 </html>
