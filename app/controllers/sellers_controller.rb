@@ -29,7 +29,8 @@ class SellersController < ApplicationController
 
     respond_to do |format|
       if @seller.save
-        cookies.signed[:seller_id] = @seller.seller_id
+        cookies.permanent.signed[:seller_id] = @seller.seller_id
+        cookies.permanent.signed[:id] = 'seller'
         format.html { redirect_to @seller, notice: 'Seller was successfully created.' }
         format.json { render :show, status: :created, location: @seller }
       else
@@ -53,6 +54,8 @@ class SellersController < ApplicationController
       cookies.permanent.signed[:seller_id] = @seller.seller_id
       cookies.permanent.signed[:id] = 'seller'
       redirect_to sellers_dashboard_url
+    else
+      redirect_to sellers_login_url
     end
   end
 

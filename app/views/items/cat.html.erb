@@ -7,8 +7,10 @@
 
     <h2><%= @category.category_name %></h2>
     <% @sub_categories.each do |sub_category| %>
-        <h3><%= sub_category.sub_category_name %></h3>
-        <% items = Item.where('sub_category_id = ?', sub_category.sub_category_id).order(:hits) %>
+        <% items = Item.where('sub_category_id = ?', sub_category.sub_category_id).order(hits: :desc) %>
+        <% if items.size != 0 %>
+            <h3><%= sub_category.sub_category_name %></h3>
+        <% end %>
         <% items.each_slice(3) do |item| %>
 
             <div class="row">

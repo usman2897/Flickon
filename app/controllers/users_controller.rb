@@ -59,6 +59,8 @@ class UsersController < ApplicationController
       cookies.permanent.signed[:user_id] = @user.user_id
       cookies.permanent.signed[:id] = 'user'
       redirect_to items_url
+    else
+      redirect_to users_login_url
     end
   end
 
