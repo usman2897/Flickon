@@ -1,0 +1,41 @@
+<% if cookies.signed[:id] == 'user' %>
+  <%= link_to 'My Orders', { controller: "orders", action: "index" } %>
+<% end %>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<div class="container">
+  <h1 align="center">Items</h1>
+
+    <h2><%= @category.category_name %></h2>
+    <% @sub_categories.each do |sub_category| %>
+        <h3><%= sub_category.sub_category_name %></h3>
+        <% items = Item.where('sub_category_id = ?', sub_category.sub_category_id).order(:hits) %>
+        <% items.each_slice(3) do |item| %>
+
+            <div class="row">
+                <% item.each do |item| %>
+                <% sub_category = SubCategory.find(item.sub_category_id) %>
+
+                    <div class="col-lg-4 " >
+                    <div class = "w3-card-4" style="width: 20rem;">
+                    <div class="w3-container" style="padding:10px;" >
+                        <img  src='<%= item.image_url %>' class="card-img-top" style="width:200px; height:200px;">
+                    </div>
+                    
+                    <div class="w3-container" >
+                        <h4 class="card-title"><%= item.item_name %><br></h4>
+                        <p class="card-text"><%= item.description %><br></p>
+                        <p><%= item.price %></p>
+                        <div style="padding:10px;">
+                        <div class = 'w3-button w3-block w3-dark-grey btn'><%= link_to 'Show', item %> </div>
+                        </div>
+
+                    </div>
+                    </div>
+                    </div>
+
+                <% end %>    
+            </div>
+            <hr/>
+    <% end %>
+<% end %>
+</div>

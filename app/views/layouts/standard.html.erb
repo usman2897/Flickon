@@ -1,14 +1,4 @@
-<style>
-li {
-    border-right: 1px solid #bbb;
-}
-ul {
-    float:left;
-}
-li:last-child {
-    border-right: none;
-}
-</style>
+
 
 
 <!DOCTYPE html>
@@ -19,6 +9,10 @@ li:last-child {
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   </head>
  
   <body>
@@ -33,18 +27,27 @@ li:last-child {
         <% url = request.original_url %>
         <% if account_user_signed_in? && cookies.signed[:id] == 'user' %>
           <% @current_user = current_account_user %>
-          <li style="color:aqua;"><%= @current_user.user_id %></li>
-          <li style="float:right;"><%= link_to 'logout', users_logout_path %></li>
+          <li><%= link_to @current_user.user_id, @current_user  %></li>
+          <li> <%= link_to 'Home', { controller: "items", action: "index" } %> </li>
+          <li> <%= link_to 'My Orders', { controller: "orders", action: "index" } %> </li>
+          <li class=" navbar-right" style="float: right;"><%= link_to 'logout', users_logout_path %></li>
+
         <% elsif account_seller_signed_in? && cookies.signed[:id] == 'seller' %>
           <% @current_seller = current_account_seller %>
-          <%= @current_seller.seller_id %>
-          <li><%= link_to 'logout', sellers_logout_path %></li>
+          <li><%= link_to @current_seller.seller_id, @current_seller %></li>
+          <li><%= link_to 'Home', sellers_my_items_path %>
+          <li><%= link_to 'Sell Item', new_item_path %></li>
+          <li><%= link_to "Dashboard", sellers_dashboard_path %>
+          <li class=" navbar-right" ><%= link_to 'logout', sellers_logout_path %></li>
+        
         <% elsif url['users/login'] %>
           <li><%= link_to 'seller login', sellers_login_path %></li>
           <li><%= link_to 'signup', new_user_path %></li>
+        
         <% elsif url['sellers/login'] %>
           <li><%= link_to 'user login', users_login_path %></li>
           <li><%= link_to 'signup', new_seller_path %></li>
+        
         <% else %>
           <li><%= link_to 'login', users_login_path %></li>
           <li><%= link_to 'signup', new_user_path %></li>

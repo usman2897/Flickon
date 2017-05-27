@@ -1,17 +1,19 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <strong>Seller_ID:</strong>
+  <%= @seller.seller_id %>
+</p>
+
+<p>
   <strong>Organization:</strong>
   <%= @seller.organization %>
 </p>
 
-<p>
-  <strong>Password:</strong>
-  <%= @seller.password %>
-</p>
+
 <% if account_seller_signed_in? %>
   <% @current = current_account_seller %>
-  <% if @current.seller_id == item.seller_id %>
+  <% if @current.seller_id == @seller.seller_id %>
     <%= link_to 'Edit', edit_seller_path(@seller) %> |
   <% end %>
 <% end %>

@@ -24,6 +24,12 @@
   <strong>User phone:</strong>
   <%= @user.user_phone %>
 </p>
+
+<p>
+  <strong>User Address:</strong>
+  <%= @user.address %>
+</p>
+
 <% if account_user_signed_in? %>
   <% @current = current_account_user %>
   <% if @current.user_id == @user.user_id %>

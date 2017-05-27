@@ -56,6 +56,15 @@ class SellersController < ApplicationController
     end
   end
 
+  def my_items
+    @categories = Category.all
+    current_account_seller
+    if account_seller_signed_in?
+      @items = Item.where('seller_id = ?', @current_seller.seller_id)
+    end
+  end
+  
+
   def dashboard
     @orders = Array.new
     current_account_seller

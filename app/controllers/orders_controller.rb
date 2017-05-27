@@ -29,9 +29,11 @@ class OrdersController < ApplicationController
     if account_user_signed_in? != true
       redirect_to users_login_url
     end
+    current_account_user
     @order = Order.new
     $item = Item.find(params[:item])
     @order.item_id = @item_id
+    @order.address = @current_user.address
   end
 
   # GET /orders/1/edit
@@ -107,6 +109,6 @@ class OrdersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit( :item_id, :ordered_quantity, :total_price)
+      params.require(:order).permit( :item_id, :ordered_quantity, :total_price, :address)
     end
 end

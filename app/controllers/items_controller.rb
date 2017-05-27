@@ -6,7 +6,7 @@ class ItemsController < ApplicationController
   # GET /items.json
   def index
     current_account_seller
-    @items = Item.where("quantity > ?", 0)
+    @categories = Category.all
   end
 
   # GET /items/1
@@ -14,13 +14,6 @@ class ItemsController < ApplicationController
   def show
     current_account_seller
     @item = Item.find(params[:id])
-    if(@item.quantity == 0)
-      @item.destroy
-    respond_to do |format|
-      format.html { redirect_to items_url, notice: 'Item was successfully destroyed.' }
-      format.json { head :no_content }
-    end
-    end
     @item.update_attribute(:hits, @item.hits + 1)
     @category = Category.find(@item.category_id)
     @sub_category = SubCategory.find(@item.sub_category_id)
@@ -50,6 +43,8 @@ class ItemsController < ApplicationController
       redirect_to items_url
     end
     @item = Item.new(item_params)
+    current_account_seller
+    @item.seller_id = @current_seller.seller_id
     respond_to do |format|
       if @item.save
         format.html { redirect_to @item, notice: 'Item was successfully created.' }
@@ -75,6 +70,11 @@ class ItemsController < ApplicationController
     end
   end
 
+  def cat
+    @category = Category.find(params[:category])
+    @sub_categories = SubCategory.where('category_id = ?', @category.category_id)
+    #@items = Item.where('category_id = ?', params[:category]).order(:hits)
+  end
   # DELETE /items/1
   # DELETE /items/1.json
   def destroy
@@ -96,10 +96,10 @@ class ItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
-      params.require(:item).permit(:item_name, :category_id, :sub_category_id, :quantity, :price, :description, :seller_id, :image)
+      params.require(:item).permit(:item_name, :brand, :category_id, :sub_category_id, :quantity, :price, :description, :image)
     end
 
     def check_seller
-      account_seller_signed_in? && @current_account_seller.seller_id == item.seller_id
+      account_seller_signed_in? && @current_seller.seller_id == item.seller_id
     end
 end

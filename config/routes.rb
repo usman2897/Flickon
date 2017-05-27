@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   get 'sellers/dashboard'
   get 'sellers/dispatched'
   get 'sellers/deliver'
+  get 'items/cat'
+  get 'sellers/my_items'
   resources :items
   resources :sellers
   resources :order_tracks

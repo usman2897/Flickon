@@ -1,11 +1,13 @@
-
+<% if cookies.signed[:id] == 'user' %>
+  <%= link_to 'My Orders', { controller: "orders", action: "index" } %>
+<% end %>
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <div class="container">
   <h1 align="center">Items</h1>
 
   <% @categories.each do |category| %>
-    <h2><%= link_to category.category_name, { controller: "items", action: "cat", category: category.category_id } %></h2>
-    <% items = Item.where('category_id = ?', category.category_id).order(:hits).limit(3) %>
+    <h2><%=  category.category_name %></h2>
+    <% items = @items.where('category_id = ?', category.category_id).order(:hits) %>
     <% items.each_slice(3) do |item| %>
 
           <div class="row">
