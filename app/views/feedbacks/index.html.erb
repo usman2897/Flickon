@@ -16,7 +16,7 @@
     <% @feedbacks.each do |feedback| %>
       <tr>
         <td><%= feedback.user_id %></td>
-        <td><%= feedback.time_date %></td>
+        <td><%= feedback.time_date.to_formatted_s(:long_ordinal) %></td>
         <td><%= feedback.feedback %></td>
         <td><%= link_to 'Show', feedback %></td>
         <td><%= link_to 'Edit', edit_feedback_path(feedback) %></td>

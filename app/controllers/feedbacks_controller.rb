@@ -1,4 +1,5 @@
 class FeedbacksController < ApplicationController
+  layout 'standard'
   before_action :set_feedback, only: [:show, :edit, :update, :destroy]
 
   # GET /feedbacks
@@ -25,7 +26,12 @@ class FeedbacksController < ApplicationController
   # POST /feedbacks.json
   def create
     @feedback = Feedback.new(feedback_params)
-
+    current_account_user
+    if account_user_signed_in? != true
+      redirect_to users_login_url, notice: "User have to be signed in to give feedback!"
+    end
+    @feedback.user_id = @current_user.user_id
+    @feedback.time_date = Time.now + to_ist
     respond_to do |format|
       if @feedback.save
         format.html { redirect_to @feedback, notice: 'Feedback was successfully created.' }
@@ -69,6 +75,6 @@ class FeedbacksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def feedback_params
-      params.require(:feedback).permit(:user_id, :time_date, :feedback)
+      params.require(:feedback).permit(:feedback)
     end
 end

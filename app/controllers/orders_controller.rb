@@ -26,14 +26,15 @@ class OrdersController < ApplicationController
 
   # GET /orders/new?item=1
   def new
-    if account_user_signed_in? != true
-      redirect_to users_login_url
-    end
     current_account_user
-    @order = Order.new
-    $item = Item.find(params[:item])
-    @order.item_id = @item_id
-    @order.address = @current_user.address
+    if account_user_signed_in? != true
+      redirect_to users_login_url, notice: 'User must be loggedin!'
+    else
+      @order = Order.new
+      $item = Item.find(params[:item])
+      @order.item_id = $item.item_id
+      @order.address = @current_user.address
+    end
   end
 
   # GET /orders/1/edit

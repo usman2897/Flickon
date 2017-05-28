@@ -9,6 +9,7 @@
         <p>Item_id: <%= order.item_id %><br>
         Ordered Quantity: <%= order.ordered_quantity %><br>
         total_price: <%= order.total_price %><br>
+        Ordered Address: <%= order.address %><br>
         Ordered_time: <%= order.ordered_time.to_formatted_s(:long_ordinal) %></p>
         <%= link_to 'Dispatch', { controller: "sellers", action: "dispatched", id: order.order_id} %> 
     <% end %>
@@ -24,6 +25,7 @@
         <p>Item_id: <%= order.item_id %><br>
         Ordered Quantity: <%= order.ordered_quantity %><br>
         total_price: <%= order.total_price %><br>
+        Ordered Address: <%= order.address %><br>
         Ordered_time: <%= order.ordered_time.to_formatted_s(:long_ordinal) %></p>
         <%= link_to 'Deliver', { controller: "sellers", action: "deliver", id: order.order_id} %>
     <% end %>
@@ -39,6 +41,7 @@
         <p>Item_id: <%= order.item_id %><br>
         Ordered Quantity: <%= order.ordered_quantity %><br>
         total_price: <%= order.total_price %><br>
+        Ordered Address: <%= order.address %><br>
         Ordered_time: <%= order.ordered_time.to_formatted_s(:long_ordinal) %></p>
     <% end %>
 <% end %>

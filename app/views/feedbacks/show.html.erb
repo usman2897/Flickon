@@ -7,7 +7,7 @@
 
 <p>
   <strong>Time date:</strong>
-  <%= @feedback.time_date %>
+  <%= @feedback.time_date.to_formatted_s(:long_ordinal) %>
 </p>
 
 <p>

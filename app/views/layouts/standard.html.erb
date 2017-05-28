@@ -30,6 +30,7 @@
           <li><%= link_to @current_user.user_id, @current_user  %></li>
           <li> <%= link_to 'Home', { controller: "items", action: "index" } %> </li>
           <li> <%= link_to 'My Orders', { controller: "orders", action: "index" } %> </li>
+          <li> <%= link_to 'feedback', { controller: "feedbacks", action: "new"} %> </li>
           <li class=" navbar-right" style="float: right;"><%= link_to 'logout', users_logout_path %></li>
 
         <% elsif account_seller_signed_in? && cookies.signed[:id] == 'seller' %>
