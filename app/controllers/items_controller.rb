@@ -7,6 +7,7 @@ class ItemsController < ApplicationController
   def index
     current_account_seller
     @categories = Category.all
+    @item = Item.all
   end
 
   # GET /items/1

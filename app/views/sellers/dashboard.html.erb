@@ -1,32 +1,85 @@
-<h3>Dashboard</h3>
-<h4 style = "color:red;">New Orders</h4>
-<% @orders.each do |order| %>
-    <% if order.dispatched_time == nil && order.delivered_time == nil %>
-        <p>Item_id: <%= order.item_id %><br>
-        Ordered Quantity: <%= order.ordered_quantity %><br>
-        total_price: <%= order.total_price %><br>
-        Ordered_time: <%= order.ordered_time.to_formatted_s(:long_ordinal) %></p>
-        <%= link_to 'dispatch', { controller: "sellers", action: "dispatched", id: order.order_id} %> 
-    <% end %>
-<% end %>
 
-<h4 style = "color:Blue;">Dispatched Orders</h4>
-<% @orders.each do |order| %>
-    <% if order.dispatched_time != nil && order.delivered_time == nil %>
-        <p>Item_id: <%= order.item_id %><br>
-        Ordered Quantity: <%= order.ordered_quantity %><br>
-        total_price: <%= order.total_price %><br>
-        Ordered_time: <%= order.ordered_time.to_formatted_s(:long_ordinal) %></p>
-        <%= link_to 'dispatch', { controller: "sellers", action: "deliver", id: order.order_id} %>
-    <% end %>
-<% end %>
 
-<h4>Previous Orders</h4>
-<% @orders.each do |order| %>
-    <% if order.dispatched_time != nil && order.delivered_time != nil %>
-        <p>Item_id: <%= order.item_id %><br>
-        Ordered Quantity: <%= order.ordered_quantity %><br>
-        total_price: <%= order.total_price %><br>
-        Ordered_time: <%= order.ordered_time.to_formatted_s(:long_ordinal) %></p>
+<div class="container">
+<h1>Dashboard</h1>
+<br>
+<h4 style = "color:red;">
+<i class="fa fa-bell fa-lg" aria-hidden="true">New Orders</i></h4>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th style="width:20%">Item</th>
+      <th style="width:20%">Ordered quantity</th>
+      <th style="width:20%">Total price</th>
+      <th style="width:40%">Ordered Time</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @orders.each do |order| %>
+        <% if order.dispatched_time == nil && order.delivered_time == nil %>
+            <tr>
+                <td><%= order.item_id %></td>
+                <td><%= order.ordered_quantity %></td>
+                <td><%= order.total_price %></td>
+                <td><%= order.ordered_time.to_formatted_s(:long_ordinal)  %></td>
+                <td><i class="fa fa-check-square fa-lg" aria-hidden="true"><%= link_to 'Dispatch', { controller: "sellers", action: "dispatched", id: order.order_id} %> </i></td>
+            </tr>
+        <% end %>
     <% end %>
-<% end %>
+  </tbody>
+</table>
+
+<h4 style = "color:Blue;"><i class="fa fa-book fa-lg" aria-hidden="true">Dispatched Orders</i></h4>
+<table  class="table table-striped">
+  <thead>
+    <tr>
+      <th style="width:20%">Item</th>
+      <th style="width:20%">Dispatched quantity</th>
+      <th style="width:20%">Total price</th>
+      <th style="width:40%">Dispatched Time</th>
+    </tr>
+  </thead>
+ <tbody>
+    <% @orders.each do |order| %>
+        <% if order.dispatched_time != nil && order.delivered_time == nil %>
+            <tr>
+                <td><%= order.item_id %></td>
+                <td><%= order.ordered_quantity %></td>
+                <td><%= order.total_price %></td>
+                <td><%= order.dispatched_time.to_formatted_s(:long_ordinal)  %></td>
+                <td>  <i class="fa fa-truck fa-2x" aria-hidden="true"><%= link_to 'Deliver', { controller: "sellers", action: "deliver", id: order.order_id} %> </i></td>
+            </tr>
+        <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+
+<h4><i class="fa fa-history fa-lg" aria-hidden="true"></i>Previous Orders</h4>
+<table  class="table table-striped">
+  <thead>
+    <tr>
+      <th style="width:20%">Item</th>
+      <th style="width:20%">Deliverd quantity</th>
+      <th style="width:20%">Total price</th>
+      <th style="width:40%">Deliverd Time</th>
+    </tr>
+  </thead>
+ <tbody>
+    <% @orders.each do |order| %>
+        <% if order.dispatched_time != nil && order.delivered_time != nil %>
+            <tr>
+                <td><%= order.item_id %></td>
+                <td><%= order.ordered_quantity %></td>
+                <td><%= order.total_price %></td>
+                <td><%= order.delivered_time.to_formatted_s(:long_ordinal)  %></td>
+                <td><i class="fa fa-smile-o fa-lg" aria-hidden="true">Deliverd </i></td>
+            </tr>
+        <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+</div>

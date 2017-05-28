@@ -1,53 +1,70 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  
-  <img src="<%= @item.image_url %>" style="width:200px;hight:200px;" >
-</p>
-
-<p>
-  <strong>Item name:</strong>
-  <%= @item.item_name %>
-</p>
-
-<p>
-  <strong>Brand:</strong>
-  <%= @item.brand %>
-</p>
-
-<p>
-  <strong>Category:</strong>
-  <%= @category.category_name %>
-</p>
-
-<p>
-  <strong>Sub category:</strong>
-  <%= @sub_category.sub_category_name %>
-</p>
-
-<p>
-  <strong>Quantity:</strong>
-  <%= @item.quantity %>
-</p>
-
-<p>
-  <strong>Price:</strong>
-  <%= @item.price %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @item.description %>
-</p>
-
-<p>
-  <strong>Seller:</strong>
-  <%= @item.seller_id %>
-</p>
 
 
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <img src="<%= @item.image_url %>"  style="margin: 0 auto;display:block;width:544px;hight:327px;" >
+    </div>
+    <div class="col-md-6" ><span class="pull-right" style='padding-right:200px;'>
+      <p>
+        <strong style="font-size: 5.5em;"><%= @item.item_name %></strong>
+        
+      </p>
+
+      <p style="font-size: 2em;">
+      Brand:
+        <%= @item.brand %>
+      </p>
+
+      <p style="font-size: 2em;">
+       Category:
+        <%= @category.category_name %>
+      </p>
+
+      <p style="font-size: 2em;">
+        Sub category:
+        <%= @sub_category.sub_category_name %>
+      </p>
+
+      <p style="font-size: 2em;">
+        Availabilty:
+        <%= @item.quantity %>
+      </p>
+
+      <p style="font-size: 2em;">
+       Price:
+        <%= @item.price %>
+      </p>
+
+    </span></div>
+     
+  </div>
+   <p style="font-size: 2em;">
+          <%= @item.description %>
+      </p>
+
+      <p style="font-size: 2em;">
+        <strong>Seller:</strong>
+        <%= @item.seller_id %>
+      </p>
+</div>
 <% if account_seller_signed_in? && @current_seller.seller_id == @item.seller_id %>
-  <%= link_to 'Edit', edit_item_path(@item) %>| 
+  <div class=' pull-right' style="padding-right:10%;">
+    <i class="fa fa-pencil" aria-hidden="true"></i>
+    <%= link_to 'Edit', edit_item_path(@item) %>
+  </div>
 <% end %>
-<%= link_to 'Back', items_path %>
-<%= link_to " BUY", { controller: "orders", action: "new", item: @item.item_id} %>
+
+  <div class=' pull-left' style="padding-left:10%;">
+    <i class="fa fa-chevron-left" aria-hidden="true"></i>
+    <%= link_to 'Back', items_path %>
+  </div>
+
+<div style="padding-left:50%;">
+    <div class = 'w3-button w3-light-green btn btn-md  '>
+      <%= link_to " BUY", { controller: "orders", action: "new", item: @item.item_id} %>
+    </div>
+</div>

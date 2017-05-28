@@ -1,20 +1,27 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Seller_ID:</strong>
-  <%= @seller.seller_id %>
-</p>
 
-<p>
-  <strong>Organization:</strong>
-  <%= @seller.organization %>
-</p>
+<div class="card " style="font-size:20px;padding-left:20rem;width: 40rem;">
+  <i class="fa fa-user-circle " style="font-size:200px;" aria-hidden="true"></i>
+  
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item"><%= @seller.seller_id %></li>
+    <li class="list-group-item"><%= @seller.organization %></li>
+  </ul>
+  <div class="card-block">
+    <% if account_seller_signed_in? %>
+      <% @current = current_account_seller %>
+      <% if @current.seller_id == @seller.seller_id %>
+        <div class = 'w3-button w3-light-green btn'>
+          <i class="fa fa-pencil" aria-hidden="true"></i>
+          <%= link_to 'Edit', edit_seller_path(@seller) %> 
+        </div>
+      <% end %>
+    <% end %>
+    <div class = 'w3-button w3-light-green btn'>
+          <i class="fa fa-chevron-left" aria-hidden="true"></i>
+      <%= link_to 'Back', sellers_path %>
+    <div>
+  </div>
+</div>
 
-
-<% if account_seller_signed_in? %>
-  <% @current = current_account_seller %>
-  <% if @current.seller_id == @seller.seller_id %>
-    <%= link_to 'Edit', edit_seller_path(@seller) %> |
-  <% end %>
-<% end %>
-<%= link_to 'Back', sellers_path %>

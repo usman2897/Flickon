@@ -1,4 +1,11 @@
+<style>
+  .navbar-nav > li{
+  margin-left:20px;
+  margin-right:20px;
+  color:peru;
+}
 
+</style>
 
 
 <!DOCTYPE html>
@@ -13,11 +20,12 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
  
   <body>
 
-<div class="navbar navbar-inverse bg-inverse">
+<div class="navbar navbar-light" style="background-color: #B0C4DE;">
       <div class="container">
 
 
@@ -27,30 +35,31 @@
         <% url = request.original_url %>
         <% if account_user_signed_in? && cookies.signed[:id] == 'user' %>
           <% @current_user = current_account_user %>
-          <li><%= link_to @current_user.user_id, @current_user  %></li>
-          <li> <%= link_to 'Home', { controller: "items", action: "index" } %> </li>
-          <li> <%= link_to 'My Orders', { controller: "orders", action: "index" } %> </li>
-          <li class=" navbar-right" style="float: right;"><%= link_to 'logout', users_logout_path %></li>
+          <li><i class="fa fa-user-o fa-3x"><%= link_to @current_user.user_id, @current_user  %></i></li>
+          <li> <i class="fa fa-home fa-3x">
+            <%= link_to 'Home', { controller: "items", action: "index" } %></i> </li>
+          <li> <i class="fa fa-shopping-bag fa-3x"><%= link_to 'My Orders', { controller: "orders", action: "index" } %> </i></li>
+          <li><i class="fa fa-reply fa-3x"  ><%= link_to 'logout', users_logout_path %></i></li>
 
         <% elsif account_seller_signed_in? && cookies.signed[:id] == 'seller' %>
           <% @current_seller = current_account_seller %>
-          <li><%= link_to @current_seller.seller_id, @current_seller %></li>
-          <li><%= link_to 'Home', sellers_my_items_path %>
-          <li><%= link_to 'Sell Item', new_item_path %></li>
-          <li><%= link_to "Dashboard", sellers_dashboard_path %>
-          <li class=" navbar-right" ><%= link_to 'logout', sellers_logout_path %></li>
+          <li><i class="fa fa-user-o fa-3x"  ><%= link_to @current_seller.seller_id, @current_seller %></i></li>
+          <li> <i class="fa fa-home fa-3x"  ><%= link_to 'Home', sellers_my_items_path %></i> </li>
+          <li><i class="fa fa-rupee fa-3x"  ><%= link_to 'Sell Item', new_item_path %></i></li>
+          <li><i class="fa fa-dashboard fa-3x"  ><%= link_to "Dashboard", sellers_dashboard_path %></i></li>
+          <li><i class="fa fa-reply fa-3x"  ><%= link_to 'logout', sellers_logout_path %></i></li>
         
         <% elsif url['users/login'] %>
-          <li><%= link_to 'seller login', sellers_login_path %></li>
-          <li><%= link_to 'signup', new_user_path %></li>
+          <li><%= link_to 'Seller Login', sellers_login_path, {style: "color: purple"} %></li>
+          <li><%= link_to 'Sign Up', new_user_path, {style: "color: purple"} %></li>
         
         <% elsif url['sellers/login'] %>
-          <li><%= link_to 'user login', users_login_path %></li>
-          <li><%= link_to 'signup', new_seller_path %></li>
+          <li><%= link_to 'User Login', users_login_path, {style: "color: purple"} %></li>
+          <li><%= link_to 'Sign Up', new_seller_path, {style: "color: purple"} %></li>
         
         <% else %>
-          <li><%= link_to 'login', users_login_path %></li>
-          <li><%= link_to 'signup', new_user_path %></li>
+          <li><%= link_to 'Login', users_login_path, {style: "color: purple"} %></li>
+          <li><%= link_to 'Sign Up', new_user_path, {style: "color: purple"} %></li>
         <% end %>
 
         </ul>

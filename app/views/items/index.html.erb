@@ -5,7 +5,8 @@
 
   <% @categories.each do |category| %>
     <h2><%= link_to category.category_name, { controller: "items", action: "cat", category: category.category_id } %></h2>
-    <% items = Item.where('category_id = ?', category.category_id).order(:hits).limit(3) %>
+    <% @items = Item.where('category_id = ?', category.category_id).order(:hits).limit(3) %>
+    <% items = @items.where('quantity > ?', 0) %>
     <% items.each_slice(3) do |item| %>
 
           <div class="row">
