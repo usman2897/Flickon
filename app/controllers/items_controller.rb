@@ -43,16 +43,22 @@ class ItemsController < ApplicationController
     if account_user_signed_in?
       redirect_to items_url
     end
-    @item = Item.new(item_params)
     current_account_seller
+    @item = Item.new(item_params)
     @item.seller_id = @current_seller.seller_id
-    respond_to do |format|
-      if @item.save
-        format.html { redirect_to @item, notice: 'Item was successfully created.' }
-        format.json { render :show, status: :created, location: @item }
-      else
-        format.html { render :new }
-        format.json { render json: @item.errors, status: :unprocessable_entity }
+    @similar = Item.where(item_name: @item.item_name, category_id: @item.category_id, sub_category_id: @item.sub_category_id, price: @item.price, seller_id: @item.seller_id, brand: @item.brand ).first
+    if @similar != nil
+      @similar.update_attribute(:quantity, @item.quantity + @similar.quantity)
+      redirect_to @item, notice: 'Item was successfully updated.'
+    else
+      respond_to do |format|
+        if @item.save
+          format.html { redirect_to @item, notice: 'Item was successfully created.' }
+          format.json { render :show, status: :created, location: @item }
+        else
+          format.html { render :new }
+          format.json { render json: @item.errors, status: :unprocessable_entity }
+        end
       end
     end
   end

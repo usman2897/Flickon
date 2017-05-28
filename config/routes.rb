@@ -17,5 +17,6 @@ Rails.application.routes.draw do
   resources :order_tracks
   resources :orders
   resources :users
+  resources :feedbacks
   root 'items#index'
 end

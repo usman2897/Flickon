@@ -11,6 +11,8 @@
       <th>Ordered quantity</th>
       <th>Total price</th>
       <th>Ordered Time</th>
+      <th>Dispatched Time</th>
+      <th>Delivered Time</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -20,20 +22,25 @@
         <% $item = Item.find(order.item_id) %>
       <tr>
         <td><%= order.order_id %></td>
-        <td><%= $item.item_name %></td>
+        <td><%= link_to $item.item_name, order %></td>
         <td><%= $item.price %></td>
         <td><%= order.ordered_quantity %></td>
         <td><%= order.total_price %></td>
         <td><%= order.ordered_time.to_formatted_s(:long_ordinal)  %></td>
-        <% if order.dispatched_time != nil %>
+        <% if order.dispatched_time == nil%>
+          <td>N/A</td>
+        <% end %>
+        <% if order.dispatched_time != nil%>
           <td><%= order.dispatched_time.to_formatted_s(:long_ordinal) %></td>
           <% if order.delivered_time != nil %>
             <td><%= order.delivered_time.to_formatted_s(:long_ordinal) %></td>
             <td style = 'color:blue;'>Delivered!</td>
           <% else %>
+            <td>N/A</td>
             <td style = 'color:green;'>Dispatched!</td>
           <% end %>
         <% else %>
+          <td>N/A</td>
           <td style = 'color:red;'>Ordered!</td>
         <% end %>
       </tr>

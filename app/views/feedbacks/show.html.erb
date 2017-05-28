@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @feedback.user_id %>
+</p>
+
+<p>
+  <strong>Time date:</strong>
+  <%= @feedback.time_date.to_formatted_s(:long_ordinal) %>
+</p>
+
+<p>
+  <strong>Feedback:</strong>
+  <%= @feedback.feedback %>
+</p>
+
+<%= link_to 'Edit', edit_feedback_path(@feedback) %> |
+<%= link_to 'Back', feedbacks_path %>

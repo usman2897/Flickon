@@ -8,7 +8,7 @@ class OrdersController < ApplicationController
   def index
     current_account_user
     if account_user_signed_in?
-      @orders = Order.where( "user_id = ?", @current_user.user_id)
+      @orders = Order.where( "user_id = ?", @current_user.user_id).order(:delivered_time)
     else
       redirect_to users_login_url
     end
@@ -26,19 +26,24 @@ class OrdersController < ApplicationController
 
   # GET /orders/new?item=1
   def new
-    if account_user_signed_in? != true
-      redirect_to users_login_url
-    end
     current_account_user
-    @order = Order.new
-    $item = Item.find(params[:item])
-    @order.item_id = @item_id
-    @order.address = @current_user.address
+    if account_user_signed_in? != true
+      redirect_to users_login_url, notice: 'User must be loggedin!'
+    else
+      @order = Order.new
+      $item = Item.find(params[:item])
+      @order.item_id = $item.item_id
+      @order.address = @current_user.address
+    end
   end
 
   # GET /orders/1/edit
   def edit
-    @orders = Order.find_by(:order_id, params[:id])
+    @order = Order.where( order_id: params[:id].split(',').first, item_id: params[:id].split(',').last ).first
+    $item = Item.find(@order.item_id)
+    if @order.dispatched_time != nil 
+      redirect_to orders_url, notice: 'Order is already dispatched/delivered.'
+    end
     #@orders.each do |order|
      # @order = order
     #end
@@ -74,8 +79,20 @@ class OrdersController < ApplicationController
   # PATCH/PUT /orders/1
   # PATCH/PUT /orders/1.json
   def update
+    @order = Order.find(params[:id])
+    current_account_user
+    #@order.order_id = params[:id].split(',').first
+    #@order.user_id = @current_user.user_id
+    #@order.item_id = params[:id].split(',').last
+    $item.update_attribute(:quantity, $item.quantity+@order.ordered_quantity)
+    @order.ordered_quantity = order_params[:ordered_quantity]
+    @order.total_price = $item.price * @order.ordered_quantity
+    @order.ordered_time = Time.now + to_ist
+    @order.address = order_params[:address]
+    $item.update_attribute(:quantity, $item.quantity-@order.ordered_quantity)
     respond_to do |format|
-      if @order.update(order_params)
+      if @order.update_attributes(:ordered_quantity => @order.ordered_quantity, :total_price => @order.total_price,
+        :ordered_time => @order.ordered_time, :address => @order.address)
         format.html { redirect_to @order, notice: 'Order was successfully updated.' }
         format.json { render :show, status: :ok, location: @order }
       else

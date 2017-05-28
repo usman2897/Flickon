@@ -41,6 +41,7 @@
           <li> <i class="fa fa-shopping-bag fa-3x"><%= link_to 'My Orders', { controller: "orders", action: "index" } %> </i></li>
           <li><i class="fa fa-reply fa-3x"  ><%= link_to 'logout', users_logout_path %></i></li>
 
+
         <% elsif account_seller_signed_in? && cookies.signed[:id] == 'seller' %>
           <% @current_seller = current_account_seller %>
           <li><i class="fa fa-user-o fa-3x"  ><%= link_to @current_seller.seller_id, @current_seller %></i></li>
