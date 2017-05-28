@@ -2,9 +2,22 @@
   .navbar-nav > li{
   margin-left:20px;
   margin-right:20px;
-  color:peru;
+  margin-top:5px;
+  color:#e4c49b;
 }
 
+
+
+.navbar a{
+    color: #F8F8FF !important;
+}
+
+
+
+.navbar{
+  height: 40px !important;
+  font-size: 10px !important;
+}
 </style>
 
 
@@ -25,7 +38,7 @@
  
   <body>
 
-<div class="navbar navbar-light" style="background-color: #B0C4DE;">
+<div class="navbar navbar-light" style="background-color: #808080;">
       <div class="container">
 
 
@@ -39,28 +52,30 @@
           <li> <i class="fa fa-home fa-3x">
             <%= link_to 'Home', { controller: "items", action: "index" } %></i> </li>
           <li> <i class="fa fa-shopping-bag fa-3x"><%= link_to 'My Orders', { controller: "orders", action: "index" } %> </i></li>
-          <li><i class="fa fa-reply fa-3x"  ><%= link_to 'logout', users_logout_path %></i></li>
+          <li> <i class="fa fa-file-text-o fa-3x">
+            <%= link_to 'Feedback', { controller: "feedbacks", action: "new" } %></i> </li>
+          <li><i class="fa fa-reply fa-3x"  ><%= link_to 'Logout', users_logout_path %></i></li>
 
 
         <% elsif account_seller_signed_in? && cookies.signed[:id] == 'seller' %>
           <% @current_seller = current_account_seller %>
           <li><i class="fa fa-user-o fa-3x"  ><%= link_to @current_seller.seller_id, @current_seller %></i></li>
-          <li> <i class="fa fa-home fa-3x"  ><%= link_to 'Home', sellers_my_items_path %></i> </li>
+          <li><i class="fa fa-home fa-3x"  ><%= link_to 'Home', sellers_my_items_path %></i> </li>
           <li><i class="fa fa-rupee fa-3x"  ><%= link_to 'Sell Item', new_item_path %></i></li>
           <li><i class="fa fa-dashboard fa-3x"  ><%= link_to "Dashboard", sellers_dashboard_path %></i></li>
-          <li><i class="fa fa-reply fa-3x"  ><%= link_to 'logout', sellers_logout_path %></i></li>
+          <li><i class="fa fa-reply fa-3x"  ><%= link_to 'Logout', sellers_logout_path %></i></li>
         
         <% elsif url['users/login'] %>
-          <li><%= link_to 'Seller Login', sellers_login_path, {style: "color: purple"} %></li>
-          <li><%= link_to 'Sign Up', new_user_path, {style: "color: purple"} %></li>
+          <li><i class="fa    fa-3x"  ><%= link_to 'Seller Login', sellers_login_path  %></i></li>
+          <li><i class="fa    fa-3x"  ><%= link_to 'Sign Up', new_user_path  %></i></li>
         
         <% elsif url['sellers/login'] %>
-          <li><%= link_to 'User Login', users_login_path, {style: "color: purple"} %></li>
-          <li><%= link_to 'Sign Up', new_seller_path, {style: "color: purple"} %></li>
+          <li><i class="fa    fa-3x"  ><%= link_to 'User Login', users_login_path  %></i></li>
+          <li><i class="fa    fa-3x"  ><%= link_to 'Sign Up', new_seller_path  %></i></li>
         
         <% else %>
-          <li><%= link_to 'Login', users_login_path, {style: "color: purple"} %></li>
-          <li><%= link_to 'Sign Up', new_user_path, {style: "color: purple"} %></li>
+          <li><i class="fa  fa-3x"  ><%= link_to 'Login', users_login_path %></i></li>
+          <li><i class="fa    fa-3x"  ><%= link_to 'Sign Up', new_user_path  %></i></li>
         <% end %>
 
         </ul>

@@ -1,3 +1,4 @@
+<div class="wrapper">
 <%= form_for(feedback) do |f| %>
   <% if feedback.errors.any? %>
     <div id="error_explanation">
@@ -11,12 +12,19 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :feedback %>
-    <%= f.text_area :feedback %>
-  </div>
+<div class="container">
+						<div class="form-group row">
+							<label  class="col-sm-1 col-form-label">Seller ID</label>
+							<div class="col-sm-10" style="width:500px;">
+								<%= f.text_area :feedback  , class: 'form-control', placeholder: "Seller ID" %>
+							</div>
+						</div>
 
-  <div class="actions">
-    <%= f.submit %>
+
+ <div class="actions">
+    <%= f.submit "Submit" , class: "actions btn  btn-primary" %>
   </div>
 <% end %>
+
+  </div>
+</div>

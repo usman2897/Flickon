@@ -1,39 +1,30 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>User:</strong>
-  <%= @user.user_id %>
-</p>
 
-<p>
-  <strong>User name:</strong>
-  <%= @user.user_name %>
-</p>
+<div class="card " style="font-size:20px;padding-left:20rem;width: 60rem;">
+  <i class="fa fa-user-circle " style="font-size:200px;" aria-hidden="true"></i>
+  
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item"><%= @user.user_name %></li>
+    <li class="list-group-item"><%= @user.user_email %></li>
+    <li class="list-group-item"><%= @user.user_phone %></li>
+    <li class="list-group-item"><div class="card-block"><%= @user.address %></p></div></li>
+  </ul>
+  
+  <div class="card-block">
+    <% if account_user_signed_in? %>
+      <% @current = current_account_user %>
+      <% if @current.user_id == @user.user_id %>
+        <div class = 'w3-button w3-light-green btn'>
+          <i class="fa fa-pencil" aria-hidden="true"></i>
+          <%= link_to 'Edit', edit_user_path(@user) %> 
+        </div>
+      <% end %>
+    <% end %>
+    <div class = 'w3-button w3-light-green btn'>
+          <i class="fa fa-chevron-left" aria-hidden="true"></i>
+      <%= link_to 'Back', users_path %>
+    <div>
+  </div>
+</div>
 
-<p>
-  <strong>User email:</strong>
-  <%= @user.user_email %>
-</p>
-
-<p>
-  <strong>Password:</strong>
-  <%= @user.password %>
-</p>
-
-<p>
-  <strong>User phone:</strong>
-  <%= @user.user_phone %>
-</p>
-
-<p>
-  <strong>User Address:</strong>
-  <%= @user.address %>
-</p>
-
-<% if account_user_signed_in? %>
-  <% @current = current_account_user %>
-  <% if @current.user_id == @user.user_id %>
-    <%= link_to 'Edit', edit_user_path(@user) %> |
-  <% end %>
-<% end %>
-<%= link_to 'Back', users_path %>
