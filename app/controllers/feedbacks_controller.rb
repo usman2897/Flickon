@@ -34,7 +34,7 @@ class FeedbacksController < ApplicationController
     @feedback.time_date = Time.now + to_ist
     respond_to do |format|
       if @feedback.save
-        format.html { redirect_to @feedback, notice: 'Feedback was successfully created.' }
+        format.html { redirect_to feedbacks_url, notice: 'Feedback was successfully created.' }
         format.json { render :show, status: :created, location: @feedback }
       else
         format.html { render :new }

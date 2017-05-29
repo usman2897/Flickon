@@ -6,11 +6,11 @@
 <div class="container">
   <div class="row">
     <div class="col-md-6">
-      <img src="<%= @item.image_url %>"  style="margin: 0 auto;display:block;width:544px;hight:327px;" >
+      <img src="<%= @item.image_url %>"  style="margin: 0 auto;display:block;width:500px;hight:300px;" >
     </div>
     <div class="col-md-6" ><span class="pull-right" style='padding-right:200px;'>
       <p>
-        <strong style="font-size: 5.5em;"><%= @item.item_name %></strong>
+        <strong style="font-size: 5.0em;"><%= @item.item_name %></strong>
         
       </p>
 
@@ -39,6 +39,15 @@
         <%= @item.price %>
       </p>
 
+      <br>
+      <br>
+      
+      <div style="padding-left:50%;">
+        <div class = 'w3-button w3-light-green btn btn-lg'>
+          <%= link_to " BUY", { controller: "orders", action: "new", item: @item.item_id} %>
+        </div>
+      </div>
+
     </span></div>
      
   </div>
@@ -63,8 +72,3 @@
     <%= link_to 'Back', items_path %>
   </div>
 
-<div style="padding-left:50%;">
-    <div class = 'w3-button w3-light-green btn btn-md  '>
-      <%= link_to " BUY", { controller: "orders", action: "new", item: @item.item_id} %>
-    </div>
-</div>

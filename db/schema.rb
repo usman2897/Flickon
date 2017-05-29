@@ -37,15 +37,16 @@ ActiveRecord::Schema.define(version: 20170517102209) do
   end
 
   create_table "items", primary_key: "item_id", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string  "item_name",       limit: 45,  null: false
-    t.integer "category_id",                 null: false
-    t.integer "sub_category_id",             null: false
-    t.integer "quantity",                    null: false
+    t.string  "item_name",       limit: 45,              null: false
+    t.integer "category_id",                             null: false
+    t.integer "sub_category_id",                         null: false
+    t.integer "quantity",                                null: false
     t.float   "price",           limit: 53
     t.string  "description",     limit: 150
-    t.string  "seller_id",       limit: 45,  null: false
-    t.integer "hits"
-    t.string  "image",           limit: 45
+    t.string  "seller_id",       limit: 45,              null: false
+    t.integer "hits",                        default: 0
+    t.string  "image",           limit: 335
+    t.string  "brand",           limit: 33
     t.index ["category_id"], name: "fk_Items_Category1_idx", using: :btree
     t.index ["seller_id"], name: "fk_Items_Seller1_idx", using: :btree
     t.index ["sub_category_id"], name: "fk_Items_SubCategory1_idx", using: :btree
@@ -63,18 +64,22 @@ ActiveRecord::Schema.define(version: 20170517102209) do
   end
 
   create_table "orders", primary_key: ["order_id", "item_id"], force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer "order_id",                                   null: false
-    t.string  "user_id",          limit: 45,                null: false
-    t.integer "item_id",                                    null: false
-    t.decimal "ordered_quantity",            precision: 10, null: false
-    t.float   "total_price",      limit: 53,                null: false
+    t.integer  "order_id",                                    null: false
+    t.string   "user_id",          limit: 45,                 null: false
+    t.integer  "item_id",                                     null: false
+    t.decimal  "ordered_quantity",             precision: 10, null: false
+    t.float    "total_price",      limit: 53,                 null: false
+    t.datetime "ordered_time"
+    t.datetime "dispatched_time"
+    t.datetime "delivered_time"
+    t.string   "address",          limit: 335
     t.index ["item_id"], name: "fk_Orders_Items1_idx", using: :btree
     t.index ["user_id"], name: "fk_Orders_User_idx", using: :btree
   end
 
   create_table "sellers", primary_key: "seller_id", id: :string, limit: 45, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string "organization",    limit: 45, null: false
-    t.string "password_digest", limit: 45, null: false
+    t.string "organization",    limit: 45,  null: false
+    t.string "password_digest", limit: 355
   end
 
   create_table "sub_categories", primary_key: "sub_category_id", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -84,10 +89,11 @@ ActiveRecord::Schema.define(version: 20170517102209) do
   end
 
   create_table "users", primary_key: "user_id", id: :string, limit: 45, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string  "user_name",       limit: 45,                null: false
-    t.string  "user_email",      limit: 45,                null: false
-    t.string  "password_digest", limit: 45,                null: false
-    t.decimal "user_phone",                 precision: 10
+    t.string  "user_name",       limit: 45,                 null: false
+    t.string  "user_email",      limit: 45,                 null: false
+    t.string  "password_digest", limit: 355
+    t.decimal "user_phone",                  precision: 10
+    t.string  "address",         limit: 335
     t.index ["user_email"], name: "Email_UNIQUE", unique: true, using: :btree
   end
 

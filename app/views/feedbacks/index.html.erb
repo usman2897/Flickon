@@ -2,30 +2,211 @@
 
 <h1>Feedbacks</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>User</th>
-      <th>Time date</th>
-      <th>Feedback</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @feedbacks.each do |feedback| %>
-      <tr>
-        <td><%= feedback.user_id %></td>
-        <td><%= feedback.time_date.to_formatted_s(:long_ordinal) %></td>
-        <td><%= feedback.feedback %></td>
-        <td><%= link_to 'Show', feedback %></td>
-        <td><%= link_to 'Edit', edit_feedback_path(feedback) %></td>
-        <td><%= link_to 'Destroy', feedback, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div style="padding-left:50%;">
+    <div class = 'w3-button w3-light-grey btn btn-md  '>
+       <%= link_to 'Give Feedback', new_feedback_path %>
+    </div>
+   
+  </div>
+
+
 
 <br>
 
-<%= link_to 'New Feedback', new_feedback_path %>
+<style>
+.timeline {
+    list-style: none;
+    padding: 10px 0 10px;
+    position: relative;
+}
+
+    .timeline:before {
+        top: 0;
+        bottom: 0;
+        position: absolute;
+        content: " ";
+        width: 3px;
+        background-color: #eeeeee;
+        left: 25%;
+        margin-left: -1.5px;
+    }
+
+    .timeline > li {
+        margin-bottom: 10px;
+        position: relative;
+    }
+
+  .glyphicon{
+    top: 13px !important;
+  }
+        .timeline > li:before,
+        .timeline > li:after {
+            content: " ";
+            display: table;
+        }
+
+        .timeline > li:after {
+            clear: both;
+        }
+
+        .timeline > li > .timeline-panel {
+            width: 21%;
+            float: left;
+            border: 1px solid #d4d4d4;
+            border-radius: 2px;
+            padding: 10px;
+            position: relative;
+            -webkit-box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
+            box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
+        }
+        
+
+            .timeline > li > .timeline-panel:before {
+                position: absolute;
+                top: 26px;
+                right: -15px;
+                display: inline-block;
+                border-top: 15px solid transparent;
+                border-left: 15px solid #ccc;
+                border-right: 0 solid #ccc;
+                border-bottom: 15px solid transparent;
+                content: " ";
+            }
+
+            .timeline > li > .timeline-panel:after {
+                position: absolute;
+                top: 27px;
+                right: -14px;
+                display: inline-block;
+                border-top: 14px solid transparent;
+                border-left: 14px solid #fff;
+                border-right: 0 solid #fff;
+                border-bottom: 14px solid transparent;
+                content: " ";
+            }
+
+        .timeline > li > .timeline-badge {
+            color: #fff;
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+            font-size: 1.4em;
+            text-align: center;
+            position: absolute;
+            top: 16px;
+            left: 25%;
+            margin-left: -25px;
+            background-color: #999999;
+            z-index: 100;
+            border-top-right-radius: 50%;
+            border-top-left-radius: 50%;
+            border-bottom-right-radius: 50%;
+            border-bottom-left-radius: 50%;
+        }
+
+        .timeline > li.timeline-inverted > .timeline-panel {
+            float: right;
+            width: 50%;
+            margin-right: 20%;
+        }
+
+            .timeline > li.timeline-inverted > .timeline-panel:before {
+                border-left-width: 0;
+                border-right-width: 15px;
+                left: -15px;
+                right: auto;
+            }
+
+            .timeline > li.timeline-inverted > .timeline-panel:after {
+                border-left-width: 0;
+                border-right-width: 14px;
+                left: -14px;
+                right: auto;
+            }
+
+
+.timeline-badge.warning {
+    background-color: #f0ad4e !important;
+}
+
+
+.timeline-badge.info {
+    background-color: #5bc0de !important;
+    left: 51%;
+}
+
+.timeline-title {
+    margin-top: 0;
+    color: inherit;
+}
+
+
+
+@media (max-width: 76px) {
+    ul.timeline:before {
+        left: 40px;
+    }
+
+    ul.timeline > li > .timeline-panel {
+        width: calc(100% - 90px);
+        width: -moz-calc(100% - 90px);
+        width: -webkit-calc(100% - 90px);
+    }
+
+    ul.timeline > li > .timeline-badge {
+        left: 15px;
+        margin-left: 0;
+        top: 16px;
+    }
+
+    ul.timeline > li > .timeline-panel {
+        float: right;
+    }
+
+        ul.timeline > li > .timeline-panel:before {
+            border-left-width: 0;
+            border-right-width: 15px;
+            left: -15px;
+            right: auto;
+        }
+
+        ul.timeline > li > .timeline-panel:after {
+            border-left-width: 0;
+            border-right-width: 14px;
+            left: -14px;
+            right: auto;
+        }
+}
+</style>
+
+<div class="container">
+<ul class="timeline">
+  <% @feedbacks.each do |feedback| %>
+        <li>
+          <div class="timeline-badge info"><i class="glyphicon glyphicon-chevron-left"></i></div>
+          <div class="timeline-panel">
+            <div class="timeline-heading">
+              <h4 class="timeline-title"><i class="fa fa-clock-o" aria-hidden="true"></i></h4>
+              
+            </div>
+            <div class="timeline-body">
+             		<%= feedback.time_date.to_formatted_s(:long_ordinal) %>																														
+																																																							
+            </div>
+          </div>
+        </li>
+        <li class="timeline-inverted">
+          <div class="timeline-badge warning"><i class="glyphicon glyphicon-chevron-right"></i></div>
+          <div class="timeline-panel">
+            <div class="timeline-heading">
+              <h4 class="timeline-title"><i class="fa fa-bullhorn" aria-hidden="true"></i></h4>
+            </div>
+            <div class="timeline-body">
+              <%= feedback.feedback %>
+            </div>
+          </div>
+        </li>
+        <% end %>
+</ul>
+</div>
