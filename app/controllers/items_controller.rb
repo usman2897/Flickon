@@ -14,7 +14,7 @@ class ItemsController < ApplicationController
   # GET /items/1.json
   def show
     current_account_seller
-    @item = Item.find(params[:id])
+    @item = Item.find(params[:id]).nil? ? Item.find(params[:search]) : Item.find(params[:id])
     @item.update_attribute(:hits, @item.hits + 1)
     @category = Category.find(@item.category_id)
     @sub_category = SubCategory.find(@item.sub_category_id)
@@ -75,6 +75,11 @@ class ItemsController < ApplicationController
         format.json { render json: @item.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def search
+    @item = Item.where(item_name: params[:search]).first
+    redirect_to @item
   end
 
   def cat

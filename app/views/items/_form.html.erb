@@ -38,7 +38,8 @@
 						<div class="form-group row">
 							<label  class="col-sm-1 col-form-label">Sub Category</label>
 							<div class="col-sm-10" style="width:500px;">
-								<%= f.collection_select :sub_category_id, SubCategory.all, :sub_category_id, :sub_category_name , class: 'form-control' %>
+								<% sub = SubCategory.where(category_id: 1) %>
+								<%= f.collection_select :sub_category_id, sub, :sub_category_id, :sub_category_name , class: 'form-control' %>
 							</div>
 						</div>
 

@@ -12,7 +12,9 @@
     color: #F8F8FF !important;
 }
 
-
+.nav-padding {
+  padding:5px;
+}
 
 .navbar{
   height: 40px !important;
@@ -48,36 +50,44 @@
         <% url = request.original_url %>
         <% if account_user_signed_in? && cookies.signed[:id] == 'user' %>
           <% @current_user = current_account_user %>
-          <li><i class="fa fa-user-o fa-3x"><%= link_to @current_user.user_id, @current_user  %></i></li>
-          <li> <i class="fa fa-home fa-3x">
+          <li><i class="fa fa-user-o fa-2x nav-padding" ><%= link_to @current_user.user_id, @current_user  %></i></li>
+          <li> <i class="fa fa-home fa-2x nav-padding" >
             <%= link_to 'Home', { controller: "items", action: "index" } %></i> </li>
-          <li> <i class="fa fa-shopping-bag fa-3x"><%= link_to 'My Orders', { controller: "orders", action: "index" } %> </i></li>
-          <li> <i class="fa fa-file-text-o fa-3x">
+          <li> <i class="fa fa-shopping-bag fa-2x nav-padding" ><%= link_to 'My Orders', { controller: "orders", action: "index" } %> </i></li>
+          <li> <i class="fa fa-file-text-o fa-2x nav-padding" >
             <%= link_to 'Feedback', { controller: "feedbacks", action: "new" } %></i> </li>
-          <li><i class="fa fa-reply fa-3x"  ><%= link_to 'Logout', users_logout_path %></i></li>
+          <li><i class="fa fa-reply fa-2x nav-padding"   ><%= link_to 'Logout', users_logout_path %></i></li>
 
 
         <% elsif account_seller_signed_in? && cookies.signed[:id] == 'seller' %>
           <% @current_seller = current_account_seller %>
-          <li><i class="fa fa-user-o fa-3x"  ><%= link_to @current_seller.seller_id, @current_seller %></i></li>
-          <li><i class="fa fa-home fa-3x"  ><%= link_to 'Home', sellers_my_items_path %></i> </li>
-          <li><i class="fa fa-rupee fa-3x"  ><%= link_to 'Sell Item', new_item_path %></i></li>
-          <li><i class="fa fa-dashboard fa-3x"  ><%= link_to "Dashboard", sellers_dashboard_path %></i></li>
-          <li><i class="fa fa-reply fa-3x"  ><%= link_to 'Logout', sellers_logout_path %></i></li>
+          <li><i class="fa fa-user-o fa-2x nav-padding"   ><%= link_to @current_seller.seller_id, @current_seller %></i></li>
+          <li><i class="fa fa-home fa-2x nav-padding"   ><%= link_to 'Home', sellers_my_items_path %></i> </li>
+          <li><i class="fa fa-rupee fa-2x nav-padding"   ><%= link_to 'Sell Item', new_item_path %></i></li>
+          <li><i class="fa fa-dashboard fa-2x nav-padding"   ><%= link_to "Dashboard", sellers_dashboard_path %></i></li>
+          <li><i class="fa fa-reply fa-2x nav-padding"   ><%= link_to 'Logout', sellers_logout_path %></i></li>
         
         <% elsif url['users/login'] %>
-          <li><i class="fa    fa-3x"  ><%= link_to 'Seller Login', sellers_login_path  %></i></li>
-          <li><i class="fa    fa-3x"  ><%= link_to 'Sign Up', new_user_path  %></i></li>
+          <li><i class="fa    fa-2x nav-padding"   ><%= link_to 'Seller Login', sellers_login_path  %></i></li>
+          <li><i class="fa    fa-2x nav-padding"   ><%= link_to 'Sign Up', new_user_path  %></i></li>
         
         <% elsif url['sellers/login'] %>
-          <li><i class="fa    fa-3x"  ><%= link_to 'User Login', users_login_path  %></i></li>
-          <li><i class="fa    fa-3x"  ><%= link_to 'Sign Up', new_seller_path  %></i></li>
+          <li><i class="fa    fa-2x nav-padding"   ><%= link_to 'User Login', users_login_path  %></i></li>
+          <li><i class="fa    fa-2x nav-padding"   ><%= link_to 'Sign Up', new_seller_path  %></i></li>
         
         <% else %>
-          <li><i class="fa  fa-3x"  ><%= link_to 'Login', users_login_path %></i></li>
-          <li><i class="fa    fa-3x"  ><%= link_to 'Sign Up', new_user_path  %></i></li>
+          <li><i class="fa  fa-2x nav-padding"   ><%= link_to 'Login', users_login_path %></i></li>
+          <li><i class="fa    fa-2x nav-padding"   ><%= link_to 'Sign Up', new_user_path  %></i></li>
         <% end %>
-
+          <li style='width:30%;float:right;'>
+            <%= form_tag({:action => 'search', :controller => 'items'}, {:method => 'get'}) do %>
+            <div class='input-group'>
+              <%= search_field_tag :search, value = nil, options = {placeholder: 'search...', class: 'form-control'} %>
+              <span class='input-group-btn'><%= submit_tag 'search', class: ' btn btn-primary' %>
+              </span>
+            </div>
+            <% end %>
+          </li>
         </ul>
       </div>
     </div>

@@ -1,0 +1,11 @@
+Started GET "/sellers/login" for 127.0.0.1 at 2017-05-29 16:21:02 +0530
+Processing by SellersController#login as HTML
+  [1m[36mSeller Load (0.4ms)[0m  [1m[34mSELECT  `sellers`.* FROM `sellers` WHERE `sellers`.`seller_id` IS NULL LIMIT 1[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`user_id` IS NULL LIMIT 1[0m
+  Rendering sellers/login.html.erb within layouts/standard
+  Rendered sellers/login.html.erb within layouts/standard (33.1ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`user_id` IS NULL LIMIT 1[0m  [["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `sellers`.* FROM `sellers` WHERE `sellers`.`seller_id` IS NULL LIMIT 1[0m  [["LIMIT", 1]]
+Completed 200 OK in 7488ms (Views: 7398.6ms | ActiveRecord: 4.3ms)
+Started GET "/assets/application-895ae8ca2b3268d6153266e6779a6d89796096e2da27247f1558a72aa570cff9.css" for 127.0.0.1 at 2017-05-29 16:21:10 +0530
+Started GET "/assets/application-d748ef4695eb465b590bffcd037cdd6ec8fe7088d6f595043936bc9a0abb4a83.js" for 127.0.0.1 at 2017-05-29 16:21:10 +0530

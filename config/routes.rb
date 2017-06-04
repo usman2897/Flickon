@@ -12,11 +12,13 @@ Rails.application.routes.draw do
   get 'sellers/deliver'
   get 'items/cat'
   get 'sellers/my_items'
+  get 'items/search'
   resources :items
   resources :sellers
   resources :order_tracks
   resources :orders
   resources :users
   resources :feedbacks
+  resources :sub_categories
   root 'items#index'
 end
