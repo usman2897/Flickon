@@ -8,6 +8,10 @@ class ItemsController < ApplicationController
     current_account_seller
     @categories = Category.all
     @item = Item.all
+    respond_to do |format|
+      format.html
+      format.json { @items = Item.search(params[:term]) }
+    end
   end
 
   # GET /items/1

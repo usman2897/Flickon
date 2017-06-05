@@ -6,4 +6,8 @@ class Item < ApplicationRecord
     belongs_to :sub_category
     belongs_to :seller
     mount_uploader :image, ImageUploader
+
+    def self.search(term)
+        where('LOWER(item_name) LIKE :term', term: "%#{term.downcase}%")
+    end
 end
