@@ -20,6 +20,7 @@ app.Items.prototype = {
     },
 
     _render: function(ul, item) {
+        console.log(item);
     var markup = [
         '<span class="img">',
         '<img src="' + item.image_url + '" />',

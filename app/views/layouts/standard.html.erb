@@ -39,7 +39,9 @@
     <link href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" rel="Stylesheet"></link>
     <script>
       $(function() {
-        new app.Items;
+        $(document).on("turbolinks:load", function() {
+          new app.Items;
+        });
       });
     </script>
   </head>
@@ -85,11 +87,11 @@
           <li><i class="fa  fa-2x nav-padding"   ><%= link_to 'Login', users_login_path %></i></li>
           <li><i class="fa    fa-2x nav-padding"   ><%= link_to 'Sign Up', new_user_path  %></i></li>
         <% end %>
-          <li style='width:30%;float:right;'>
+          <li style='width:35%;float:right;'>
             <%= form_tag({:action => 'search', :controller => 'items'}, {:method => 'get'}) do %>
-            <div class='input-group'>
+            <div class='input-group items-search'>
               <%= search_field_tag :search, value = nil, options = {placeholder: 'search...', class: 'form-control'} %>
-              <span class='input-group-btn'><%= submit_tag 'search', class: ' btn btn-primary' %>
+              <span class='input-group-btn search-btn'><%= submit_tag 'search', class: ' btn btn-primary' %>
               </span>
               <div class="results" id="search-results"></div>
             </div>
