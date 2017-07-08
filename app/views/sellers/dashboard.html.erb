@@ -8,8 +8,9 @@
 <table class="table table-striped">
   <thead>
     <tr>
+      <th style="width:10%">Order ID</th>
       <th style="width:20%">Item</th>
-      <th style="width:20%">Ordered quantity</th>
+      <th style="width:10%">Quantity</th>
       <th style="width:20%">Total price</th>
       <th style="width:40%">Ordered Time</th>
     </tr>
@@ -18,8 +19,10 @@
   <tbody>
     <% @orders.each do |order| %>
         <% if order.dispatched_time == nil && order.delivered_time == nil %>
+          <% item = Item.find(order.item_id) %>
             <tr>
-                <td><%= order.item_id %></td>
+                <td><%= link_to order.order_id, order %></td>
+                <td><%= item.item_name %></td>
                 <td><%= order.ordered_quantity %></td>
                 <td><%= order.total_price %></td>
                 <td><%= order.ordered_time.to_formatted_s(:long_ordinal)  %></td>
@@ -34,8 +37,9 @@
 <table  class="table table-striped">
   <thead>
     <tr>
+      <th style="width:10%">Order ID</th>
       <th style="width:20%">Item</th>
-      <th style="width:20%">Dispatched quantity</th>
+      <th style="width:10%">Quantity</th>
       <th style="width:20%">Total price</th>
       <th style="width:40%">Dispatched Time</th>
     </tr>
@@ -43,8 +47,10 @@
  <tbody>
     <% @orders.each do |order| %>
         <% if order.dispatched_time != nil && order.delivered_time == nil %>
+          <% item = Item.find(order.item_id) %>
             <tr>
-                <td><%= order.item_id %></td>
+                <td><%= link_to order.order_id, order %></td>
+                <td><%= item.item_name %></td>
                 <td><%= order.ordered_quantity %></td>
                 <td><%= order.total_price %></td>
                 <td><%= order.dispatched_time.to_formatted_s(:long_ordinal)  %></td>
@@ -60,8 +66,9 @@
 <table  class="table table-striped">
   <thead>
     <tr>
+      <th style="width:10%">Order ID</th>
       <th style="width:20%">Item</th>
-      <th style="width:20%">Deliverd quantity</th>
+      <th style="width:10%">Quantity</th>
       <th style="width:20%">Total price</th>
       <th style="width:40%">Deliverd Time</th>
     </tr>
@@ -69,8 +76,10 @@
  <tbody>
     <% @orders.each do |order| %>
         <% if order.dispatched_time != nil && order.delivered_time != nil %>
+          <% item = Item.find(order.item_id) %>
             <tr>
-                <td><%= order.item_id %></td>
+                <td><%= link_to order.order_id, order %></td>
+                <td><%= item.item_name %></td>
                 <td><%= order.ordered_quantity %></td>
                 <td><%= order.total_price %></td>
                 <td><%= order.delivered_time.to_formatted_s(:long_ordinal)  %></td>
