@@ -57,6 +57,7 @@
 .items-search .results .ui-menu-item .title {
   display: block;
   color: #555;
+  border: 0;
 }
 
 .items-search .results .ui-menu-item .author {
@@ -66,6 +67,7 @@
   color: #aaa;
   margin-top: .6em;
   letter-spacing: 1px;
+  border: 0;
 }
 
 .items-search .results .ui-menu-item .price {
@@ -73,6 +75,7 @@
   font-size: .8em;
   color: #aaa;
   margin-top: .5em;
+  border: 0;
 }
 
 .items-search .results .ui-state-active .price,
