@@ -109686,3 +109686,718 @@ Completed 200 OK in 62ms (Views: 53.9ms | ActiveRecord: 1.9ms)
 
 
 >>>>>>> a9ffe849d0b2bd6f11f1bd8dad8d5e7573868223
+Started GET "/items/cat?category=1" for 127.0.0.1 at 2017-07-08 22:38:48 +0530
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Processing by ItemsController#cat as HTML
+  Parameters: {"category"=>"1"}
+  [1m[36mCategory Load (0.6ms)[0m  [1m[34mSELECT  `categories`.* FROM `categories` WHERE `categories`.`category_id` = 1 LIMIT 1[0m
+  Rendering items/cat.html.erb within layouts/standard
+  [1m[36mSubCategory Load (0.7ms)[0m  [1m[34mSELECT `sub_categories`.* FROM `sub_categories` WHERE (category_id = 1)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM `items` WHERE (sub_category_id = 1)[0m
+  [1m[36mCACHE (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM `items` WHERE (sub_category_id = 1)[0m
+  [1m[36mItem Load (0.9ms)[0m  [1m[34mSELECT `items`.* FROM `items` WHERE (sub_category_id = 1) ORDER BY `items`.`hits` DESC[0m
+  [1m[36mSubCategory Load (0.5ms)[0m  [1m[34mSELECT  `sub_categories`.* FROM `sub_categories` WHERE `sub_categories`.`sub_category_id` = 1 LIMIT 1[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `sub_categories`.* FROM `sub_categories` WHERE `sub_categories`.`sub_category_id` = 1 LIMIT 1[0m  [["sub_category_id", 1], ["LIMIT", 1]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM `items` WHERE (sub_category_id = 2)[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM `items` WHERE (sub_category_id = 2)[0m
+  [1m[36mItem Load (0.7ms)[0m  [1m[34mSELECT `items`.* FROM `items` WHERE (sub_category_id = 2) ORDER BY `items`.`hits` DESC[0m
+  [1m[36mSubCategory Load (0.6ms)[0m  [1m[34mSELECT  `sub_categories`.* FROM `sub_categories` WHERE `sub_categories`.`sub_category_id` = 2 LIMIT 1[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM `items` WHERE (sub_category_id = 3)[0m
+  [1m[36mCACHE (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM `items` WHERE (sub_category_id = 3)[0m
+  [1m[36mItem Load (0.8ms)[0m  [1m[34mSELECT `items`.* FROM `items` WHERE (sub_category_id = 3) ORDER BY `items`.`hits` DESC[0m
+  [1m[36mSubCategory Load (0.5ms)[0m  [1m[34mSELECT  `sub_categories`.* FROM `sub_categories` WHERE `sub_categories`.`sub_category_id` = 3 LIMIT 1[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `sub_categories`.* FROM `sub_categories` WHERE `sub_categories`.`sub_category_id` = 3 LIMIT 1[0m  [["sub_category_id", 3], ["LIMIT", 1]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM `items` WHERE (sub_category_id = 4)[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM `items` WHERE (sub_category_id = 4)[0m
+  [1m[36mItem Load (0.7ms)[0m  [1m[34mSELECT `items`.* FROM `items` WHERE (sub_category_id = 4) ORDER BY `items`.`hits` DESC[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM `items` WHERE (sub_category_id = 5)[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM `items` WHERE (sub_category_id = 5)[0m
+  [1m[36mItem Load (0.7ms)[0m  [1m[34mSELECT `items`.* FROM `items` WHERE (sub_category_id = 5) ORDER BY `items`.`hits` DESC[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM `items` WHERE (sub_category_id = 6)[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM `items` WHERE (sub_category_id = 6)[0m
+  [1m[36mItem Load (0.7ms)[0m  [1m[34mSELECT `items`.* FROM `items` WHERE (sub_category_id = 6) ORDER BY `items`.`hits` DESC[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM `items` WHERE (sub_category_id = 7)[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM `items` WHERE (sub_category_id = 7)[0m
+  [1m[36mItem Load (0.7ms)[0m  [1m[34mSELECT `items`.* FROM `items` WHERE (sub_category_id = 7) ORDER BY `items`.`hits` DESC[0m
+  [1m[36mSubCategory Load (0.5ms)[0m  [1m[34mSELECT  `sub_categories`.* FROM `sub_categories` WHERE `sub_categories`.`sub_category_id` = 7 LIMIT 1[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `sub_categories`.* FROM `sub_categories` WHERE `sub_categories`.`sub_category_id` = 7 LIMIT 1[0m  [["sub_category_id", 7], ["LIMIT", 1]]
+  Rendered items/cat.html.erb within layouts/standard (174.8ms)
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`user_id` IS NULL LIMIT 1[0m
+  [1m[36mSeller Load (0.7ms)[0m  [1m[34mSELECT  `sellers`.* FROM `sellers` WHERE `sellers`.`seller_id` = 'usmn' LIMIT 1[0m
+Completed 200 OK in 695ms (Views: 631.1ms | ActiveRecord: 22.9ms)
+
+
+Started GET "/uploads/item/image/2/3-2-1024x670.jpg" for 127.0.0.1 at 2017-07-08 22:38:49 +0530
+  
+ActionController::RoutingError (No route matches [GET] "/uploads/item/image/2/3-2-1024x670.jpg"):
+  
+actionpack (5.0.3) lib/action_dispatch/middleware/debug_exceptions.rb:53:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.0.3) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.3) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.3) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.3) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.0.3) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.3) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.0.3) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.0.3) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.3) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.3) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.3) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.3) lib/rails/engine.rb:522:in `call'
+puma (3.9.1) lib/puma/configuration.rb:224:in `call'
+puma (3.9.1) lib/puma/server.rb:602:in `handle_request'
+puma (3.9.1) lib/puma/server.rb:435:in `process_client'
+puma (3.9.1) lib/puma/server.rb:299:in `block in run'
+puma (3.9.1) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+  Rendering /home/usman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout
+  Rendering /home/usman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/usman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.4ms)
+  Rendered collection of /home/usman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/routes/_route.html.erb [70 times] (89.4ms)
+  Rendered /home/usman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/routes/_table.html.erb (21.1ms)
+  Rendering /home/usman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/usman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (4.4ms)
+  Rendered /home/usman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (174.7ms)
+Started GET "/items?term=a" for 127.0.0.1 at 2017-07-08 22:38:54 +0530
+Processing by ItemsController#index as JSON
+  Parameters: {"term"=>"a"}
+  [1m[36mSeller Load (1.3ms)[0m  [1m[34mSELECT  `sellers`.* FROM `sellers` WHERE `sellers`.`seller_id` = 'usmn' LIMIT 1[0m
+  Rendering items/index.json.jbuilder
+  [1m[36mItem Load (0.6ms)[0m  [1m[34mSELECT `items`.* FROM `items` WHERE (LOWER(item_name) LIKE '%a%')[0m
+  Rendered items/_item.json.jbuilder (2.8ms)
+  Rendered items/_item.json.jbuilder (0.7ms)
+  Rendered items/_item.json.jbuilder (0.4ms)
+  Rendered items/_item.json.jbuilder (0.6ms)
+  Rendered items/_item.json.jbuilder (1.8ms)
+  Rendered items/_item.json.jbuilder (0.7ms)
+  Rendered items/index.json.jbuilder (24.3ms)
+Completed 200 OK in 39ms (Views: 32.9ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/items/null" for 127.0.0.1 at 2017-07-08 22:38:54 +0530
+Processing by ItemsController#show as HTML
+  Parameters: {"id"=>"null"}
+Started GET "/uploads/item/image/2/3-2-1024x670.jpg" for 127.0.0.1 at 2017-07-08 22:38:54 +0530
+  [1m[36mItem Load (4.3ms)[0m  [1m[34mSELECT  `items`.* FROM `items` WHERE `items`.`item_id` = 0 LIMIT 1[0m
+Completed 404 Not Found in 8ms (ActiveRecord: 4.3ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Item with 'item_id'=null):
+  
+app/controllers/items_controller.rb:110:in `set_item'
+  
+ActionController::RoutingError (No route matches [GET] "/uploads/item/image/2/3-2-1024x670.jpg"):
+  
+actionpack (5.0.3) lib/action_dispatch/middleware/debug_exceptions.rb:53:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.0.3) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.3) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.3) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.3) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.0.3) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.3) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.0.3) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.0.3) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.3) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.3) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.3) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.3) lib/rails/engine.rb:522:in `call'
+puma (3.9.1) lib/puma/configuration.rb:224:in `call'
+puma (3.9.1) lib/puma/server.rb:602:in `handle_request'
+puma (3.9.1) lib/puma/server.rb:435:in `process_client'
+puma (3.9.1) lib/puma/server.rb:299:in `block in run'
+puma (3.9.1) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+  Rendering /home/usman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout
+  Rendering /home/usman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/usman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.8ms)
+  Rendered collection of /home/usman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/routes/_route.html.erb [70 times] (30.1ms)
+  Rendered /home/usman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.9ms)
+  Rendering /home/usman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/usman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.3ms)
+  Rendered /home/usman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (73.2ms)
+  Rendering /home/usman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /home/usman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/usman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (6.4ms)
+  Rendering /home/usman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/usman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.5ms)
+  Rendering /home/usman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/usman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.0ms)
+  Rendered /home/usman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (33.9ms)
+Started GET "/items?term=c" for 127.0.0.1 at 2017-07-08 22:38:56 +0530
+Processing by ItemsController#index as JSON
+  Parameters: {"term"=>"c"}
+  [1m[36mSeller Load (0.6ms)[0m  [1m[34mSELECT  `sellers`.* FROM `sellers` WHERE `sellers`.`seller_id` = 'usmn' LIMIT 1[0m
+  Rendering items/index.json.jbuilder
+  [1m[36mItem Load (0.8ms)[0m  [1m[34mSELECT `items`.* FROM `items` WHERE (LOWER(item_name) LIKE '%c%')[0m
+  Rendered items/_item.json.jbuilder (4.6ms)
+  Rendered items/_item.json.jbuilder (0.7ms)
+  Rendered items/_item.json.jbuilder (0.8ms)
+  Rendered items/index.json.jbuilder (13.5ms)
+Completed 200 OK in 24ms (Views: 19.0ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/items/null" for 127.0.0.1 at 2017-07-08 22:38:56 +0530
+Processing by ItemsController#show as HTML
+  Parameters: {"id"=>"null"}
+  [1m[36mItem Load (0.5ms)[0m  [1m[34mSELECT  `items`.* FROM `items` WHERE `items`.`item_id` = 0 LIMIT 1[0m
+Completed 404 Not Found in 3ms (ActiveRecord: 0.5ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Item with 'item_id'=null):
+  
+app/controllers/items_controller.rb:110:in `set_item'
+  Rendering /home/usman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /home/usman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/usman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (6.8ms)
+  Rendering /home/usman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/usman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.8ms)
+  Rendering /home/usman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/usman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.6ms)
+  Rendered /home/usman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (35.9ms)
+Started GET "/items?term=a" for 127.0.0.1 at 2017-07-08 22:38:57 +0530
+Processing by ItemsController#index as JSON
+  Parameters: {"term"=>"a"}
+  [1m[36mSeller Load (0.6ms)[0m  [1m[34mSELECT  `sellers`.* FROM `sellers` WHERE `sellers`.`seller_id` = 'usmn' LIMIT 1[0m
+  Rendering items/index.json.jbuilder
+  [1m[36mItem Load (0.6ms)[0m  [1m[34mSELECT `items`.* FROM `items` WHERE (LOWER(item_name) LIKE '%a%')[0m
+  Rendered items/_item.json.jbuilder (1.3ms)
+  Rendered items/_item.json.jbuilder (0.4ms)
+  Rendered items/_item.json.jbuilder (0.4ms)
+  Rendered items/_item.json.jbuilder (0.3ms)
+  Rendered items/_item.json.jbuilder (0.4ms)
+  Rendered items/_item.json.jbuilder (0.4ms)
+  Rendered items/index.json.jbuilder (10.3ms)
+Completed 200 OK in 19ms (Views: 15.0ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/items/null" for 127.0.0.1 at 2017-07-08 22:38:57 +0530
+Started GET "/uploads/item/image/2/3-2-1024x670.jpg" for 127.0.0.1 at 2017-07-08 22:38:57 +0530
+Processing by ItemsController#show as HTML
+  
+  Parameters: {"id"=>"null"}
+ActionController::RoutingError (No route matches [GET] "/uploads/item/image/2/3-2-1024x670.jpg"):
+  
+actionpack (5.0.3) lib/action_dispatch/middleware/debug_exceptions.rb:53:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.0.3) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.3) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.3) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.3) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.0.3) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.3) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.0.3) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.0.3) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.3) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.3) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.3) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.3) lib/rails/engine.rb:522:in `call'
+puma (3.9.1) lib/puma/configuration.rb:224:in `call'
+puma (3.9.1) lib/puma/server.rb:602:in `handle_request'
+puma (3.9.1) lib/puma/server.rb:435:in `process_client'
+puma (3.9.1) lib/puma/server.rb:299:in `block in run'
+puma (3.9.1) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+  [1m[36mItem Load (2.0ms)[0m  [1m[34mSELECT  `items`.* FROM `items` WHERE `items`.`item_id` = 0 LIMIT 1[0m
+Completed 404 Not Found in 17ms (ActiveRecord: 2.0ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Item with 'item_id'=null):
+  
+app/controllers/items_controller.rb:110:in `set_item'
+  Rendering /home/usman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout
+  Rendering /home/usman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/usman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.8ms)
+  Rendered collection of /home/usman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/routes/_route.html.erb [70 times] (27.1ms)
+  Rendered /home/usman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.5ms)
+  Rendering /home/usman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/usman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.0ms)
+  Rendered /home/usman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (76.8ms)
+  Rendering /home/usman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /home/usman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/usman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (7.2ms)
+  Rendering /home/usman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/usman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.9ms)
+  Rendering /home/usman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/usman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.5ms)
+  Rendered /home/usman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (35.4ms)
+Started GET "/items?term=sa" for 127.0.0.1 at 2017-07-08 22:39:49 +0530
+Processing by ItemsController#index as JSON
+  Parameters: {"term"=>"sa"}
+  [1m[36mSeller Load (0.5ms)[0m  [1m[34mSELECT  `sellers`.* FROM `sellers` WHERE `sellers`.`seller_id` = 'usmn' LIMIT 1[0m
+  Rendering items/index.json.jbuilder
+  [1m[36mItem Load (0.6ms)[0m  [1m[34mSELECT `items`.* FROM `items` WHERE (LOWER(item_name) LIKE '%sa%')[0m
+  Rendered items/index.json.jbuilder (2.4ms)
+Completed 200 OK in 11ms (Views: 6.9ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/items?term=a" for 127.0.0.1 at 2017-07-08 22:39:50 +0530
+Processing by ItemsController#index as JSON
+  Parameters: {"term"=>"a"}
+  [1m[36mSeller Load (0.6ms)[0m  [1m[34mSELECT  `sellers`.* FROM `sellers` WHERE `sellers`.`seller_id` = 'usmn' LIMIT 1[0m
+  Rendering items/index.json.jbuilder
+  [1m[36mItem Load (0.6ms)[0m  [1m[34mSELECT `items`.* FROM `items` WHERE (LOWER(item_name) LIKE '%a%')[0m
+  Rendered items/_item.json.jbuilder (1.4ms)
+  Rendered items/_item.json.jbuilder (0.6ms)
+  Rendered items/_item.json.jbuilder (0.5ms)
+  Rendered items/_item.json.jbuilder (0.6ms)
+  Rendered items/_item.json.jbuilder (0.6ms)
+  Rendered items/_item.json.jbuilder (0.6ms)
+  Rendered items/index.json.jbuilder (13.1ms)
+Completed 200 OK in 24ms (Views: 18.9ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/uploads/item/image/2/3-2-1024x670.jpg" for 127.0.0.1 at 2017-07-08 22:39:51 +0530
+  
+ActionController::RoutingError (No route matches [GET] "/uploads/item/image/2/3-2-1024x670.jpg"):
+  
+actionpack (5.0.3) lib/action_dispatch/middleware/debug_exceptions.rb:53:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.0.3) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.3) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.3) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.3) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.0.3) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.3) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.0.3) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.0.3) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.3) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.3) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.3) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.3) lib/rails/engine.rb:522:in `call'
+puma (3.9.1) lib/puma/configuration.rb:224:in `call'
+puma (3.9.1) lib/puma/server.rb:602:in `handle_request'
+puma (3.9.1) lib/puma/server.rb:435:in `process_client'
+puma (3.9.1) lib/puma/server.rb:299:in `block in run'
+puma (3.9.1) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/items/null" for 127.0.0.1 at 2017-07-08 22:39:51 +0530
+Processing by ItemsController#show as HTML
+  Parameters: {"id"=>"null"}
+  [1m[36mItem Load (0.7ms)[0m  [1m[34mSELECT  `items`.* FROM `items` WHERE `items`.`item_id` = 0 LIMIT 1[0m
+Completed 404 Not Found in 3ms (ActiveRecord: 0.7ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Item with 'item_id'=null):
+  
+app/controllers/items_controller.rb:110:in `set_item'
+  Rendering /home/usman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout
+  Rendering /home/usman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/usman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.6ms)
+  Rendered collection of /home/usman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/routes/_route.html.erb [70 times] (27.4ms)
+  Rendered /home/usman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.5ms)
+  Rendering /home/usman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/usman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.7ms)
+  Rendered /home/usman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (75.3ms)
+  Rendering /home/usman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /home/usman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/usman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (7.9ms)
+  Rendering /home/usman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/usman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.5ms)
+  Rendering /home/usman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/usman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /home/usman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (36.4ms)
+Started GET "/items/search?utf8=%E2%9C%93&search=Asus+Max&commit=search" for 127.0.0.1 at 2017-07-08 22:39:54 +0530
+Processing by ItemsController#search as HTML
+  Parameters: {"utf8"=>"✓", "search"=>"Asus Max", "commit"=>"search"}
+  [1m[36mItem Load (0.6ms)[0m  [1m[34mSELECT  `items`.* FROM `items` WHERE `items`.`item_name` = 'Asus Max' ORDER BY `items`.`item_id` ASC LIMIT 1[0m
+Redirected to http://localhost:3000/items/2
+Completed 302 Found in 4ms (ActiveRecord: 0.6ms)
+
+
+Started GET "/items/2" for 127.0.0.1 at 2017-07-08 22:39:54 +0530
+Processing by ItemsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mItem Load (0.7ms)[0m  [1m[34mSELECT  `items`.* FROM `items` WHERE `items`.`item_id` = 2 LIMIT 1[0m
+  [1m[36mSeller Load (0.6ms)[0m  [1m[34mSELECT  `sellers`.* FROM `sellers` WHERE `sellers`.`seller_id` = 'usmn' LIMIT 1[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `items`.* FROM `items` WHERE `items`.`item_id` = 2 LIMIT 1[0m  [["item_id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `items`.* FROM `items` WHERE `items`.`item_id` = 2 LIMIT 1[0m  [["item_id", 2], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (16.4ms)[0m  [1m[33mUPDATE `items` SET `hits` = 15 WHERE `items`.`item_id` = 2[0m
+  [1m[35m (42.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mCategory Load (0.6ms)[0m  [1m[34mSELECT  `categories`.* FROM `categories` WHERE `categories`.`category_id` = 1 LIMIT 1[0m
+  [1m[36mSubCategory Load (1.2ms)[0m  [1m[34mSELECT  `sub_categories`.* FROM `sub_categories` WHERE `sub_categories`.`sub_category_id` = 1 LIMIT 1[0m
+  Rendering items/show.html.erb within layouts/standard
+  Rendered items/show.html.erb within layouts/standard (2.9ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`user_id` IS NULL LIMIT 1[0m
+Completed 200 OK in 202ms (Views: 122.4ms | ActiveRecord: 62.6ms)
+
+
+Started GET "/uploads/item/image/2/3-2-1024x670.jpg" for 127.0.0.1 at 2017-07-08 22:39:54 +0530
+  
+ActionController::RoutingError (No route matches [GET] "/uploads/item/image/2/3-2-1024x670.jpg"):
+  
+actionpack (5.0.3) lib/action_dispatch/middleware/debug_exceptions.rb:53:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.0.3) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.3) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.3) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.3) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.0.3) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.3) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.0.3) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.0.3) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.3) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.3) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.3) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.3) lib/rails/engine.rb:522:in `call'
+puma (3.9.1) lib/puma/configuration.rb:224:in `call'
+puma (3.9.1) lib/puma/server.rb:602:in `handle_request'
+puma (3.9.1) lib/puma/server.rb:435:in `process_client'
+puma (3.9.1) lib/puma/server.rb:299:in `block in run'
+puma (3.9.1) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+  Rendering /home/usman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout
+  Rendering /home/usman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/usman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.5ms)
+  Rendered collection of /home/usman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/routes/_route.html.erb [70 times] (41.2ms)
+  Rendered /home/usman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/routes/_table.html.erb (2.3ms)
+  Rendering /home/usman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/usman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.3ms)
+  Rendered /home/usman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (92.4ms)
+Started GET "/items" for 127.0.0.1 at 2017-07-08 22:39:59 +0530
+Processing by ItemsController#index as HTML
+  [1m[36mSeller Load (0.5ms)[0m  [1m[34mSELECT  `sellers`.* FROM `sellers` WHERE `sellers`.`seller_id` = 'usmn' LIMIT 1[0m
+  Rendering items/index.html.erb within layouts/standard
+  [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT `categories`.* FROM `categories`[0m
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM `items` WHERE (category_id = 1) AND (quantity > 0) LIMIT 3) subquery_for_count[0m
+  [1m[36mItem Load (0.8ms)[0m  [1m[34mSELECT  `items`.* FROM `items` WHERE (category_id = 1) AND (quantity > 0) ORDER BY `items`.`hits` ASC LIMIT 3[0m
+  [1m[36mSubCategory Load (0.5ms)[0m  [1m[34mSELECT  `sub_categories`.* FROM `sub_categories` WHERE `sub_categories`.`sub_category_id` = 2 LIMIT 1[0m
+  [1m[36mSubCategory Load (0.8ms)[0m  [1m[34mSELECT  `sub_categories`.* FROM `sub_categories` WHERE `sub_categories`.`sub_category_id` = 3 LIMIT 1[0m
+  [1m[36mSubCategory Load (0.5ms)[0m  [1m[34mSELECT  `sub_categories`.* FROM `sub_categories` WHERE `sub_categories`.`sub_category_id` = 7 LIMIT 1[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM `items` WHERE (category_id = 3) AND (quantity > 0) LIMIT 3) subquery_for_count[0m
+  [1m[36mItem Load (0.8ms)[0m  [1m[34mSELECT  `items`.* FROM `items` WHERE (category_id = 3) AND (quantity > 0) ORDER BY `items`.`hits` ASC LIMIT 3[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `sub_categories`.* FROM `sub_categories` WHERE `sub_categories`.`sub_category_id` = 3 LIMIT 1[0m  [["sub_category_id", 3], ["LIMIT", 1]]
+  [1m[36mSubCategory Load (0.5ms)[0m  [1m[34mSELECT  `sub_categories`.* FROM `sub_categories` WHERE `sub_categories`.`sub_category_id` = 9 LIMIT 1[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM `items` WHERE (category_id = 2) AND (quantity > 0) LIMIT 3) subquery_for_count[0m
+  [1m[36mItem Load (0.5ms)[0m  [1m[34mSELECT  `items`.* FROM `items` WHERE (category_id = 2) AND (quantity > 0) ORDER BY `items`.`hits` ASC LIMIT 3[0m
+  Rendered items/index.html.erb within layouts/standard (31.6ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`user_id` IS NULL LIMIT 1[0m
+Completed 200 OK in 153ms (Views: 139.4ms | ActiveRecord: 8.4ms)
+
+
+Started GET "/uploads/item/image/2/3-2-1024x670.jpg" for 127.0.0.1 at 2017-07-08 22:39:59 +0530
+  
+ActionController::RoutingError (No route matches [GET] "/uploads/item/image/2/3-2-1024x670.jpg"):
+  
+actionpack (5.0.3) lib/action_dispatch/middleware/debug_exceptions.rb:53:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.0.3) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.3) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.3) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.3) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.0.3) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.3) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.0.3) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.0.3) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.3) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.3) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.3) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.3) lib/rails/engine.rb:522:in `call'
+puma (3.9.1) lib/puma/configuration.rb:224:in `call'
+puma (3.9.1) lib/puma/server.rb:602:in `handle_request'
+puma (3.9.1) lib/puma/server.rb:435:in `process_client'
+puma (3.9.1) lib/puma/server.rb:299:in `block in run'
+puma (3.9.1) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+  Rendering /home/usman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout
+  Rendering /home/usman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/usman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.6ms)
+  Rendered collection of /home/usman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/routes/_route.html.erb [70 times] (38.3ms)
+  Rendered /home/usman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/routes/_table.html.erb (2.7ms)
+  Rendering /home/usman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/usman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.4ms)
+  Rendered /home/usman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (87.2ms)
+Started GET "/sellers/usmn" for 127.0.0.1 at 2017-07-08 22:40:08 +0530
+Processing by SellersController#show as HTML
+  Parameters: {"id"=>"usmn"}
+  [1m[36mSeller Load (0.5ms)[0m  [1m[34mSELECT  `sellers`.* FROM `sellers` WHERE `sellers`.`seller_id` = 'usmn' LIMIT 1[0m
+  Rendering sellers/show.html.erb within layouts/standard
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `sellers`.* FROM `sellers` WHERE `sellers`.`seller_id` = 'usmn' LIMIT 1[0m  [["seller_id", "usmn"], ["LIMIT", 1]]
+  Rendered sellers/show.html.erb within layouts/standard (2.4ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`user_id` IS NULL LIMIT 1[0m
+Completed 200 OK in 94ms (Views: 90.2ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/sellers" for 127.0.0.1 at 2017-07-08 22:40:11 +0530
+Processing by SellersController#index as HTML
+  Rendering sellers/index.html.erb within layouts/standard
+  [1m[36mSeller Load (0.6ms)[0m  [1m[34mSELECT `sellers`.* FROM `sellers`[0m
+  [1m[36mSeller Load (0.5ms)[0m  [1m[34mSELECT  `sellers`.* FROM `sellers` WHERE `sellers`.`seller_id` = 'usmn' LIMIT 1[0m
+  Rendered sellers/index.html.erb within layouts/standard (6.7ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`user_id` IS NULL LIMIT 1[0m
+Completed 200 OK in 111ms (Views: 106.9ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/sellers/usmn/edit" for 127.0.0.1 at 2017-07-08 22:40:20 +0530
+Processing by SellersController#edit as HTML
+  Parameters: {"id"=>"usmn"}
+  [1m[36mSeller Load (1.3ms)[0m  [1m[34mSELECT  `sellers`.* FROM `sellers` WHERE `sellers`.`seller_id` = 'usmn' LIMIT 1[0m
+  Rendering sellers/edit.html.erb within layouts/standard
+  Rendered sellers/_form.html.erb (11.4ms)
+  Rendered sellers/edit.html.erb within layouts/standard (13.6ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`user_id` IS NULL LIMIT 1[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `sellers`.* FROM `sellers` WHERE `sellers`.`seller_id` = 'usmn' LIMIT 1[0m  [["seller_id", "usmn"], ["LIMIT", 1]]
+Completed 200 OK in 96ms (Views: 91.4ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/sellers/usmn" for 127.0.0.1 at 2017-07-08 22:40:25 +0530
+Processing by SellersController#show as HTML
+  Parameters: {"id"=>"usmn"}
+  [1m[36mSeller Load (0.6ms)[0m  [1m[34mSELECT  `sellers`.* FROM `sellers` WHERE `sellers`.`seller_id` = 'usmn' LIMIT 1[0m
+  Rendering sellers/show.html.erb within layouts/standard
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `sellers`.* FROM `sellers` WHERE `sellers`.`seller_id` = 'usmn' LIMIT 1[0m  [["seller_id", "usmn"], ["LIMIT", 1]]
+  Rendered sellers/show.html.erb within layouts/standard (3.1ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`user_id` IS NULL LIMIT 1[0m
+Completed 200 OK in 118ms (Views: 114.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/items/new" for 127.0.0.1 at 2017-07-08 22:40:27 +0530
+Processing by ItemsController#new as HTML
+  [1m[36mSeller Load (0.6ms)[0m  [1m[34mSELECT  `sellers`.* FROM `sellers` WHERE `sellers`.`seller_id` = 'usmn' LIMIT 1[0m
+  Rendering items/new.html.erb within layouts/standard
+  [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT `categories`.* FROM `categories`[0m
+  [1m[36mSubCategory Load (0.5ms)[0m  [1m[34mSELECT `sub_categories`.* FROM `sub_categories` WHERE `sub_categories`.`category_id` = 1[0m
+  Rendered items/_form.html.erb (25.4ms)
+  Rendered items/new.html.erb within layouts/standard (27.5ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`user_id` IS NULL LIMIT 1[0m
+Completed 200 OK in 113ms (Views: 107.1ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/sellers/dashboard" for 127.0.0.1 at 2017-07-08 22:40:31 +0530
+Processing by SellersController#dashboard as HTML
+  [1m[36mSeller Load (0.6ms)[0m  [1m[34mSELECT  `sellers`.* FROM `sellers` WHERE `sellers`.`seller_id` = 'usmn' LIMIT 1[0m
+  [1m[36mItem Load (0.7ms)[0m  [1m[34mSELECT `items`.* FROM `items` WHERE `items`.`seller_id` = 'usmn'[0m
+  [1m[36mOrder Load (0.7ms)[0m  [1m[34mSELECT `orders`.* FROM `orders` WHERE `orders`.`item_id` = 12[0m
+  [1m[36mOrder Load (0.7ms)[0m  [1m[34mSELECT `orders`.* FROM `orders` WHERE `orders`.`item_id` = 13[0m
+  Rendering sellers/dashboard.html.erb within layouts/standard
+  [1m[36mItem Load (0.6ms)[0m  [1m[34mSELECT  `items`.* FROM `items` WHERE `items`.`item_id` = 12 LIMIT 1[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `items`.* FROM `items` WHERE `items`.`item_id` = 12 LIMIT 1[0m  [["item_id", 12], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `items`.* FROM `items` WHERE `items`.`item_id` = 12 LIMIT 1[0m  [["item_id", 12], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `items`.* FROM `items` WHERE `items`.`item_id` = 12 LIMIT 1[0m  [["item_id", 12], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `items`.* FROM `items` WHERE `items`.`item_id` = 12 LIMIT 1[0m  [["item_id", 12], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `items`.* FROM `items` WHERE `items`.`item_id` = 12 LIMIT 1[0m  [["item_id", 12], ["LIMIT", 1]]
+  Rendered sellers/dashboard.html.erb within layouts/standard (14.8ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`user_id` IS NULL LIMIT 1[0m
+Completed 200 OK in 185ms (Views: 139.4ms | ActiveRecord: 6.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-07-08 22:44:12 +0530
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Processing by ItemsController#index as HTML
+  [1m[36mSeller Load (0.5ms)[0m  [1m[34mSELECT  `sellers`.* FROM `sellers` WHERE `sellers`.`seller_id` = 'usmn' LIMIT 1[0m
+  Rendering items/index.html.erb within layouts/standard
+  [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT `categories`.* FROM `categories`[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM `items` WHERE (category_id = 1) AND (quantity > 0) LIMIT 3) subquery_for_count[0m
+  [1m[36mItem Load (0.6ms)[0m  [1m[34mSELECT  `items`.* FROM `items` WHERE (category_id = 1) AND (quantity > 0) ORDER BY `items`.`hits` ASC LIMIT 3[0m
+  [1m[36mSubCategory Load (0.4ms)[0m  [1m[34mSELECT  `sub_categories`.* FROM `sub_categories` WHERE `sub_categories`.`sub_category_id` = 2 LIMIT 1[0m
+  [1m[36mSubCategory Load (0.5ms)[0m  [1m[34mSELECT  `sub_categories`.* FROM `sub_categories` WHERE `sub_categories`.`sub_category_id` = 3 LIMIT 1[0m
+  [1m[36mSubCategory Load (0.4ms)[0m  [1m[34mSELECT  `sub_categories`.* FROM `sub_categories` WHERE `sub_categories`.`sub_category_id` = 7 LIMIT 1[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM `items` WHERE (category_id = 3) AND (quantity > 0) LIMIT 3) subquery_for_count[0m
+  [1m[36mItem Load (0.5ms)[0m  [1m[34mSELECT  `items`.* FROM `items` WHERE (category_id = 3) AND (quantity > 0) ORDER BY `items`.`hits` ASC LIMIT 3[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `sub_categories`.* FROM `sub_categories` WHERE `sub_categories`.`sub_category_id` = 3 LIMIT 1[0m  [["sub_category_id", 3], ["LIMIT", 1]]
+  [1m[36mSubCategory Load (0.8ms)[0m  [1m[34mSELECT  `sub_categories`.* FROM `sub_categories` WHERE `sub_categories`.`sub_category_id` = 9 LIMIT 1[0m
+  [1m[35m (1.7ms)[0m  [1m[34mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM `items` WHERE (category_id = 2) AND (quantity > 0) LIMIT 3) subquery_for_count[0m
+  [1m[36mItem Load (0.7ms)[0m  [1m[34mSELECT  `items`.* FROM `items` WHERE (category_id = 2) AND (quantity > 0) ORDER BY `items`.`hits` ASC LIMIT 3[0m
+  Rendered items/index.html.erb within layouts/standard (109.0ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`user_id` IS NULL LIMIT 1[0m
+Completed 200 OK in 556ms (Views: 469.8ms | ActiveRecord: 15.0ms)
+
+
+Started GET "/items?term=a" for 127.0.0.1 at 2017-07-08 22:44:59 +0530
+Processing by ItemsController#index as JSON
+  Parameters: {"term"=>"a"}
+  [1m[36mSeller Load (0.5ms)[0m  [1m[34mSELECT  `sellers`.* FROM `sellers` WHERE `sellers`.`seller_id` = 'usmn' LIMIT 1[0m
+  Rendering items/index.json.jbuilder
+  [1m[36mItem Load (0.6ms)[0m  [1m[34mSELECT `items`.* FROM `items` WHERE (LOWER(item_name) LIKE '%a%')[0m
+  Rendered items/_item.json.jbuilder (2.4ms)
+  Rendered items/_item.json.jbuilder (0.7ms)
+  Rendered items/_item.json.jbuilder (0.7ms)
+  Rendered items/_item.json.jbuilder (0.7ms)
+  Rendered items/_item.json.jbuilder (0.6ms)
+  Rendered items/_item.json.jbuilder (0.6ms)
+  Rendered items/index.json.jbuilder (19.5ms)
+Completed 200 OK in 34ms (Views: 29.0ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/uploads/item/image/2/3-2-1024x670.jpg" for 127.0.0.1 at 2017-07-08 22:44:59 +0530
+  
+Started GET "/null" for 127.0.0.1 at 2017-07-08 22:44:59 +0530
+ActionController::RoutingError (No route matches [GET] "/uploads/item/image/2/3-2-1024x670.jpg"):
+  
+actionpack (5.0.3) lib/action_dispatch/middleware/debug_exceptions.rb:53:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.0.3) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.3) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.3) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.3) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.0.3) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.3) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.0.3) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.0.3) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.3) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.3) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.3) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.3) lib/rails/engine.rb:522:in `call'
+puma (3.9.1) lib/puma/configuration.rb:224:in `call'
+puma (3.9.1) lib/puma/server.rb:602:in `handle_request'
+puma (3.9.1) lib/puma/server.rb:435:in `process_client'
+puma (3.9.1) lib/puma/server.rb:299:in `block in run'
+puma (3.9.1) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+  
+ActionController::RoutingError (No route matches [GET] "/null"):
+  
+actionpack (5.0.3) lib/action_dispatch/middleware/debug_exceptions.rb:53:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.0.3) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.3) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.3) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.3) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.0.3) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.3) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.0.3) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.0.3) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.3) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.3) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.3) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.3) lib/rails/engine.rb:522:in `call'
+puma (3.9.1) lib/puma/configuration.rb:224:in `call'
+puma (3.9.1) lib/puma/server.rb:602:in `handle_request'
+puma (3.9.1) lib/puma/server.rb:435:in `process_client'
+puma (3.9.1) lib/puma/server.rb:299:in `block in run'
+puma (3.9.1) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+  Rendering /home/usman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout
+  Rendering /home/usman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/usman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.8ms)
+  Rendering /home/usman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout
+  Rendered collection of /home/usman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/routes/_route.html.erb [70 times] (45.5ms)
+  Rendering /home/usman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/usman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.4ms)
+  Rendered /home/usman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/routes/_table.html.erb (23.2ms)
+  Rendered collection of /home/usman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/routes/_route.html.erb [70 times] (44.7ms)
+  Rendering /home/usman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/usman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.7ms)
+  Rendered /home/usman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (223.8ms)
+  Rendered /home/usman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/routes/_table.html.erb (24.5ms)
+  Rendering /home/usman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/usman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.1ms)
+  Rendered /home/usman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (177.3ms)
+Started GET "/items/search?utf8=%E2%9C%93&search=Asus+Max&commit=search" for 127.0.0.1 at 2017-07-08 22:45:03 +0530
+Processing by ItemsController#search as HTML
+  Parameters: {"utf8"=>"✓", "search"=>"Asus Max", "commit"=>"search"}
+  [1m[36mItem Load (0.7ms)[0m  [1m[34mSELECT  `items`.* FROM `items` WHERE `items`.`item_name` = 'Asus Max' ORDER BY `items`.`item_id` ASC LIMIT 1[0m
+Redirected to http://localhost:3000/items/2
+Completed 302 Found in 4ms (ActiveRecord: 0.7ms)
+
+
+Started GET "/items/2" for 127.0.0.1 at 2017-07-08 22:45:03 +0530
+Processing by ItemsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mItem Load (0.6ms)[0m  [1m[34mSELECT  `items`.* FROM `items` WHERE `items`.`item_id` = 2 LIMIT 1[0m
+  [1m[36mSeller Load (0.7ms)[0m  [1m[34mSELECT  `sellers`.* FROM `sellers` WHERE `sellers`.`seller_id` = 'usmn' LIMIT 1[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `items`.* FROM `items` WHERE `items`.`item_id` = 2 LIMIT 1[0m  [["item_id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `items`.* FROM `items` WHERE `items`.`item_id` = 2 LIMIT 1[0m  [["item_id", 2], ["LIMIT", 1]]
+  [1m[35m (2.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[33mUPDATE `items` SET `hits` = 16 WHERE `items`.`item_id` = 2[0m
+  [1m[35m (37.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mCategory Load (0.6ms)[0m  [1m[34mSELECT  `categories`.* FROM `categories` WHERE `categories`.`category_id` = 1 LIMIT 1[0m
+  [1m[36mSubCategory Load (0.7ms)[0m  [1m[34mSELECT  `sub_categories`.* FROM `sub_categories` WHERE `sub_categories`.`sub_category_id` = 1 LIMIT 1[0m
+  Rendering items/show.html.erb within layouts/standard
+  Rendered items/show.html.erb within layouts/standard (2.3ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`user_id` IS NULL LIMIT 1[0m
+Completed 200 OK in 137ms (Views: 78.6ms | ActiveRecord: 44.0ms)
+
+
+Started GET "/uploads/item/image/2/3-2-1024x670.jpg" for 127.0.0.1 at 2017-07-08 22:45:03 +0530
+  
+ActionController::RoutingError (No route matches [GET] "/uploads/item/image/2/3-2-1024x670.jpg"):
+  
+actionpack (5.0.3) lib/action_dispatch/middleware/debug_exceptions.rb:53:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.0.3) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.3) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.3) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.3) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.0.3) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.3) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.0.3) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.0.3) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.3) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.3) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.3) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.3) lib/rails/engine.rb:522:in `call'
+puma (3.9.1) lib/puma/configuration.rb:224:in `call'
+puma (3.9.1) lib/puma/server.rb:602:in `handle_request'
+puma (3.9.1) lib/puma/server.rb:435:in `process_client'
+puma (3.9.1) lib/puma/server.rb:299:in `block in run'
+puma (3.9.1) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+  Rendering /home/usman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout
+  Rendering /home/usman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/usman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.7ms)
+  Rendered collection of /home/usman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/routes/_route.html.erb [70 times] (47.9ms)
+  Rendered /home/usman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/routes/_table.html.erb (2.5ms)
+  Rendering /home/usman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/usman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.1ms)
+  Rendered /home/usman/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (100.3ms)
